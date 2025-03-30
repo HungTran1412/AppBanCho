@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_sanpham"
+        android:title="Sản phẩm"
+        android:icon="@android:drawable/ic_menu_gallery"/>
+
+    <item
+        android:id="@+id/nav_gioithieu"
+        android:title="Giới thiệu"
+        android:icon="@android:drawable/ic_menu_info_details"/>
+
+    <item
+        android:id="@+id/nav_lienhe"
+        android:title="Liên hệ"
+        android:icon="@android:drawable/ic_menu_call"/>
+</menu>

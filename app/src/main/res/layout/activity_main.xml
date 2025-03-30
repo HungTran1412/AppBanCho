@@ -1,48 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
+    <!-- Nội dung chính -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <!-- AppBar chứa Toolbar -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fcefd4"
+            android:fitsSystemWindows="true">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tbrManHinhChinh"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="Trang chủ"
+                app:titleTextColor="#000000"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:navigationIcon="@drawable/menu"/>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Nội dung có thể cuộn -->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true"> <!-- Giúp kéo dài màn hình -->
+            android:fillViewport="true"
+            android:fitsSystemWindows="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <androidx.appcompat.widget.Toolbar
-                    app:title="Trang chủ"
-                    android:id="@+id/tbrManHinhChinh"
-                    android:background="#fcefd4"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"/>
-
                 <ViewFlipper
                     android:id="@+id/vflManHinhChinh"
                     android:layout_width="match_parent"
                     android:layout_height="750dp">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#fcefd4">
+                        android:background="#fcefd4"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
                         <TextView
                             android:id="@+id/tvTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="10dp"
                             android:text="Thêm Một Bạn"
                             android:textColor="#002a47"
                             android:textSize="34sp"
@@ -50,67 +68,67 @@
 
                         <TextView
                             android:id="@+id/tvDescription"
-                            android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/tvTitle"
-                            android:layout_margin="16dp"
                             android:text="Thêm Ngàn Niềm Vui!"
                             android:textColor="#002a47"
-                            android:textSize="30sp" />
+                            android:textSize="30sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="8dp" />
 
                         <TextView
                             android:id="@+id/TextView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/tvDescription"
-                            android:layout_margin="16dp"
-                            android:text="Có một con thú cưng đồng cưng đồng nghĩa với việc bạn có thêm niềm vui mới. Chúng tôi có hơn 200 con thú cứng khác nhau có thể đáp ứng nhu cầu của bạn"
+                            android:text="Có một con thú cưng đồng nghĩa với việc bạn có thêm niềm vui mới. Chúng tôi có hơn 200 con thú cưng khác nhau có thể đáp ứng nhu cầu của bạn."
                             android:textColor="#002a47"
-                            android:textSize="20sp" />
-                        <Button
-                            android:id="@+id/btnGioiThieu"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/tvDescription"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="130dp"
-                            android:backgroundTint="#FFFFFF"
-                            android:text="Giới Thiệu"
-                            android:textColor="#000000" />
+                            android:textSize="20sp"
+                            android:layout_marginTop="8dp" />
 
-                        <Button
-                            android:id="@+id/btnKhamPha"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/tvDescription"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="130dp"
-                            android:layout_marginEnd="20dp"
-                            android:backgroundTint="#002a47"
-                            android:text="Khám Phá Ngay"
-                            android:textColor="#FFFFFF" />
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:layout_marginTop="20dp">
+
+                            <Button
+                                android:id="@+id/btnGioiThieu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#FFFFFF"
+                                android:text="Giới Thiệu"
+                                android:textColor="#000000"
+                                android:layout_marginEnd="20dp" />
+
+                            <Button
+                                android:id="@+id/btnKhamPha"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#002a47"
+                                android:text="Khám Phá Ngay"
+                                android:textColor="#FFFFFF" />
+                        </LinearLayout>
 
                         <ImageView
                             android:id="@+id/imgDog"
                             android:layout_width="match_parent"
                             android:layout_height="400dp"
-                            android:layout_alignParentBottom="true"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/appcho" />
-                    </RelativeLayout>
+                            android:src="@drawable/appcho"
+                            android:layout_marginTop="20dp" />
+                    </LinearLayout>
                 </ViewFlipper>
 
                 <LinearLayout
                     android:orientation="vertical"
                     android:background="#f7dca8"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"> <!-- Đổi từ match_parent sang wrap_content -->
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:textSize="20sp"
-                        android:layout_marginLeft="20dp"
+                        android:layout_margin="20dp"
                         android:textStyle="bold"
                         android:text="Một số vật nuôi của chúng tôi"
                         android:layout_width="wrap_content"
@@ -118,25 +136,20 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rcvDanhSach"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_margin="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="500dp"/> <!-- Giới hạn chiều cao RecyclerView -->
+                        android:layout_height="500dp"/>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navMenu"
-            android:layout_gravity="start"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+    <!-- Navigation Drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navMenu"
+        android:layout_gravity="start"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/menu_main"/>
 
-            <ListView
-                android:id="@+id/lsvManHinhChinh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.navigation.NavigationView>
-    </androidx.drawerlayout.widget.DrawerLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
