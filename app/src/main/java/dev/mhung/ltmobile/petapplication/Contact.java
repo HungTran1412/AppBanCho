@@ -12,6 +12,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import dev.mhung.ltmobile.petapplication.request.ContactRequest;
+import dev.mhung.ltmobile.petapplication.retrofit.RetrofitClient;
+import dev.mhung.ltmobile.petapplication.service.ContactApiService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Contact extends AppCompatActivity {
     Button btnCTTrangChu, btnCTGui;
     EditText txtCTHoTen, txtCTEmail, txtCTSDT, txtCTContent;
@@ -33,24 +40,45 @@ public class Contact extends AppCompatActivity {
 
     private void addEvents() {
         btnCTGui.setOnClickListener(v -> {
-            try {
-                String hoTen = txtCTHoTen.getText().toString();
-                String email = txtCTEmail.getText().toString();
-                String sdt = txtCTSDT.getText().toString();
-                String content = txtCTContent.getText().toString();
+            Log.d("RetrofitClient", "Bắt đầu gọi API...");
+            String hoTen = txtCTHoTen.getText().toString();
+            String email = txtCTEmail.getText().toString();
+            String sdt = txtCTSDT.getText().toString();
+            String content = txtCTContent.getText().toString();
 
-                if (hoTen.isEmpty() || email.isEmpty() || sdt.isEmpty() || content.isEmpty()) {
-                    Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                }
-                else if (!emailCheck(email)) {
-                    Toast.makeText(this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
-                }
-                Toast.makeText(this, "Gửi dữ liệu thành công!", Toast.LENGTH_SHORT).show();
-            } catch (Exception e) {
-                Log.e("Error","Lỗi: " + e.getMessage());
+            ContactApiService apiService = RetrofitClient.getInstance();
+            if (apiService == null) {
+                Log.e("RetrofitClient", "LỖI: Retrofit chưa được khởi tạo!");
+                return;
             }
+
+            if (hoTen.isEmpty() || email.isEmpty() || sdt.isEmpty() || content.isEmpty()) {
+                Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+            }
+            else if (!emailCheck(email)) {
+                Toast.makeText(this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
+            }
+
+            ContactRequest request = new ContactRequest(hoTen, email, sdt, content);
+            apiService.sendContact(request).enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(Contact.this, "Gửi dữ liệu thành công!", Toast.LENGTH_SHORT).show();
+                        Log.d("RetrofitClient", "Gửi liên hệ thành công!");
+                    } else {
+                        Toast.makeText(Contact.this, "Lỗi gửi liên hệ! Mã lỗi: " + response.code(), Toast.LENGTH_SHORT).show();
+                        Log.e("RetrofitClient", "Lỗi gửi liên hệ! Mã lỗi: " + response.code());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Log.e("RetrofitClient", "Lỗi API: " + t.getMessage());
+                }
+            });
         });
-        
+
         btnCTTrangChu.setOnClickListener(v -> {
             finish();
         });

@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 
-import dev.mhung.ltmobile.petapplication.model.SwicthScreen;
+import dev.mhung.ltmobile.petapplication.model.SwitchScreen;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar tbrManHinhChinh;
@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void addEvents() {
-        btnGioiThieu.setOnClickListener(v -> SwicthScreen.switchScreen(MainActivity.this, Introduce.class));
-        btnKhamPha.setOnClickListener(v -> SwicthScreen.switchScreen(MainActivity.this, Product.class));
+        btnGioiThieu.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, Introduce.class));
+        btnKhamPha.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, Product.class));
 
         // Xử lý khi bấm vào các mục trong NavigationView
         navMenu.setNavigationItemSelectedListener(this);
@@ -91,13 +91,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if(id == R.id.nav_sanpham){
-            SwicthScreen.switchScreen(MainActivity.this, Product.class);
+            SwitchScreen.switchScreen(MainActivity.this, Product.class);
         }else if(id == R.id.nav_gioithieu){
-            SwicthScreen.switchScreen(MainActivity.this, Introduce.class);
+            SwitchScreen.switchScreen(MainActivity.this, Introduce.class);
         }else if(id == R.id.nav_lienhe){
-            SwicthScreen.switchScreen(MainActivity.this, Contact.class);
+            SwitchScreen.switchScreen(MainActivity.this, Contact.class);
         } else if (id == R.id.nav_dangnhap) {
-            SwicthScreen.switchScreen(MainActivity.this, Login.class);
+            SwitchScreen.switchScreen(MainActivity.this, Login.class);
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
