@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.activity.EdgeToEdge;
@@ -90,14 +91,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if(id == R.id.nav_sanpham){
-            SwitchScreen.switchScreen(MainActivity.this, Product.class);
-        }else if(id == R.id.nav_gioithieu){
-            SwitchScreen.switchScreen(MainActivity.this, Introduce.class);
-        }else if(id == R.id.nav_lienhe){
-            SwitchScreen.switchScreen(MainActivity.this, Contact.class);
-        } else if (id == R.id.nav_dangnhap) {
-            SwitchScreen.switchScreen(MainActivity.this, Login.class);
+        try {
+            if(id == R.id.nav_sanpham){
+                SwitchScreen.switchScreen(MainActivity.this, Product.class);
+            }else if(id == R.id.nav_gioithieu){
+                SwitchScreen.switchScreen(MainActivity.this, Introduce.class);
+            }else if(id == R.id.nav_lienhe){
+                SwitchScreen.switchScreen(MainActivity.this, Contact.class);
+            } else if (id == R.id.nav_dangnhap) {
+                SwitchScreen.switchScreen(MainActivity.this, Login.class);
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.e("MainActivity", "Lỗi khi chuyển sang màn hình: " + e.getMessage());
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
