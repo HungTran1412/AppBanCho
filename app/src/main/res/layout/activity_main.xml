@@ -28,7 +28,7 @@
                 app:title="Trang chủ"
                 app:titleTextColor="#000000"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:theme="@style/ThemeOverlay.AppCompat.Light"
                 app:navigationIcon="@drawable/menu"/>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -37,13 +37,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
-            android:fitsSystemWindows="true"
+            android:fitsSystemWindows="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <ViewFlipper
                     android:id="@+id/vflManHinhChinh"
@@ -70,36 +70,36 @@
                             android:id="@+id/tvDescription"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
                             android:text="Thêm Ngàn Niềm Vui!"
                             android:textColor="#002a47"
                             android:textSize="30sp"
-                            android:textStyle="bold"
-                            android:layout_marginTop="8dp" />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/TextView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
                             android:text="Có một con thú cưng đồng nghĩa với việc bạn có thêm niềm vui mới. Chúng tôi có hơn 200 con thú cưng khác nhau có thể đáp ứng nhu cầu của bạn."
                             android:textColor="#002a47"
-                            android:textSize="20sp"
-                            android:layout_marginTop="8dp" />
+                            android:textSize="20sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:layout_marginTop="20dp"
                             android:gravity="center"
-                            android:layout_marginTop="20dp">
+                            android:orientation="horizontal">
 
                             <Button
                                 android:id="@+id/btnGioiThieu"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="20dp"
                                 android:backgroundTint="#FFFFFF"
                                 android:text="Giới Thiệu"
-                                android:textColor="#000000"
-                                android:layout_marginEnd="20dp" />
+                                android:textColor="#000000" />
 
                             <Button
                                 android:id="@+id/btnKhamPha"
@@ -114,31 +114,31 @@
                             android:id="@+id/imgDog"
                             android:layout_width="match_parent"
                             android:layout_height="400dp"
+                            android:layout_marginTop="20dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/appcho"
-                            android:layout_marginTop="20dp" />
+                            android:src="@drawable/appcho" />
                     </LinearLayout>
                 </ViewFlipper>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:background="#f7dca8"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="#f7dca8"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:textSize="20sp"
-                        android:layout_margin="20dp"
-                        android:textStyle="bold"
-                        android:text="Một số vật nuôi của chúng tôi"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:text="Một số vật nuôi của chúng tôi"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rcvDanhSach"
-                        android:layout_margin="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="500dp"/>
+                        android:layout_height="500dp"
+                        android:layout_margin="10dp" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
