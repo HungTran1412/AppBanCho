@@ -21,7 +21,7 @@ import retrofit2.Response;
 
 public class Contact extends AppCompatActivity {
     Button btnCTTrangChu, btnCTGui;
-    EditText txtCTHoTen, txtCTEmail, txtCTSDT, txtCTContent;
+    EditText txtCTHoTen, txtCTEmail, txtCTSDT, txtCTContent, txtCTDiaChi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,7 @@ public class Contact extends AppCompatActivity {
         txtCTEmail = findViewById(R.id.txtCTEmail);
         txtCTSDT = findViewById(R.id.txtCTSDT);
         txtCTContent = findViewById(R.id.txtCTContent);
+        txtCTDiaChi = findViewById(R.id.txtCTDiaChi);
     }
 
     private boolean emailCheck(String email) {
@@ -66,6 +67,7 @@ public class Contact extends AppCompatActivity {
         String hoTen = txtCTHoTen.getText().toString();
         String email = txtCTEmail.getText().toString();
         String sdt = txtCTSDT.getText().toString();
+        String diaChi = txtCTDiaChi.getText().toString();
         String content = txtCTContent.getText().toString();
 
         ContactApiService apiService = RetrofitClient.getInstance();
@@ -80,7 +82,7 @@ public class Contact extends AppCompatActivity {
             Toast.makeText(this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
         }
 
-        ContactRequest request = new ContactRequest(hoTen, email, sdt, content);
+        ContactRequest request = new ContactRequest(hoTen, email, sdt, diaChi, content);
         apiService.sendContact(request).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -98,5 +100,16 @@ public class Contact extends AppCompatActivity {
                 Log.e("RetrofitClient", "Lỗi API: " + t.getMessage());
             }
         });
+
+        clearTextBox();
+    }
+
+    private void clearTextBox() {
+        txtCTHoTen.setText("");
+        txtCTEmail.setText("");
+        txtCTSDT.setText("");
+        txtCTContent.setText("");
+        txtCTDiaChi.setText("");
+        txtCTHoTen.requestFocus();
     }
 }

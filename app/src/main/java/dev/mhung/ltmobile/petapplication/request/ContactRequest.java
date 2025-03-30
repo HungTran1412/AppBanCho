@@ -6,12 +6,14 @@ public class ContactRequest {
     private String fullName;
     private String email;
     private String phone;
+    private String address;
     private String content;
 
-    public ContactRequest(String fullName, String email, String phone, String content) {
+    public ContactRequest(String fullName, String email, String phone, String address, String content) {
         this.fullName = fullName;
         this.email = email;
         this.phone = phone;
+        this.address = address;
         this.content = content;
     }
 
@@ -25,6 +27,14 @@ public class ContactRequest {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void setEmail(String email) {
