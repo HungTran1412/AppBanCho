@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Cấp quyền sử dụng Internet để gọi API -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,34 +15,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetApplication"
         tools:targetApi="31">
-        <activity
-            android:name=".Login"
-            android:exported="false" />
+
         <activity
             android:name=".ui.login.Login"
             android:exported="false"
             android:label="@string/title_activity_login" />
+
         <activity
             android:name=".Contact"
             android:exported="false" />
-        <activity
-            android:name=".menu_main"
-            android:exported="false" />
+
         <activity
             android:name=".Product"
             android:exported="false" />
+
         <activity
             android:name=".Introduce"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
