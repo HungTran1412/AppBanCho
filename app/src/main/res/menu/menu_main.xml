@@ -2,15 +2,19 @@
     <item
         android:id="@+id/nav_sanpham"
         android:title="Sản phẩm"
-        android:icon="@android:drawable/ic_menu_gallery"/>
+        android:icon="@drawable/product"/>
 
     <item
         android:id="@+id/nav_gioithieu"
         android:title="Giới thiệu"
-        android:icon="@android:drawable/ic_menu_info_details"/>
+        android:icon="@drawable/introduction"/>
 
     <item
         android:id="@+id/nav_lienhe"
         android:title="Liên hệ"
-        android:icon="@android:drawable/ic_menu_call"/>
+        android:icon="@drawable/contact"/>
+    <item
+        android:id="@+id/nav_dangnhap"
+        android:title="Đăng nhập"
+        android:icon="@drawable/login"/>
 </menu>

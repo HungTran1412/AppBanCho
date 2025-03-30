@@ -96,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             SwicthScreen.switchScreen(MainActivity.this, Introduce.class);
         }else if(id == R.id.nav_lienhe){
             SwicthScreen.switchScreen(MainActivity.this, Contact.class);
+        } else if (id == R.id.nav_dangnhap) {
+            SwicthScreen.switchScreen(MainActivity.this, Login.class);
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
