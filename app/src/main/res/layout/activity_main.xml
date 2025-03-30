@@ -48,17 +48,18 @@
                 <ViewFlipper
                     android:id="@+id/vflManHinhChinh"
                     android:layout_width="match_parent"
-                    android:layout_height="750dp">
+                    android:layout_height="700dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#fcefd4"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/tvTitle"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Thêm Một Bạn"
@@ -68,6 +69,8 @@
 
                         <TextView
                             android:id="@+id/tvDescription"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
@@ -78,6 +81,8 @@
 
                         <TextView
                             android:id="@+id/TextView1"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
@@ -113,10 +118,13 @@
                         <ImageView
                             android:id="@+id/imgDog"
                             android:layout_width="match_parent"
-                            android:layout_height="400dp"
-                            android:layout_marginTop="20dp"
-                            android:scaleType="centerCrop"
+                            android:layout_height="0dp"
+                            android:layout_margin="0dp"
+                            android:layout_weight="1"
+                            android:backgroundTintMode="src_in"
+                            android:scaleType="center"
                             android:src="@drawable/appcho" />
+
                     </LinearLayout>
                 </ViewFlipper>
 
@@ -129,7 +137,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
+                        android:layout_margin="10dp"
                         android:text="Một số vật nuôi của chúng tôi"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -139,6 +147,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="500dp"
                         android:layout_margin="10dp" />
+
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
