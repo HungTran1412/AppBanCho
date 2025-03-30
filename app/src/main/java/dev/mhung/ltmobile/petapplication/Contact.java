@@ -39,45 +39,7 @@ public class Contact extends AppCompatActivity {
     }
 
     private void addEvents() {
-        btnCTGui.setOnClickListener(v -> {
-            Log.d("RetrofitClient", "Bắt đầu gọi API...");
-            String hoTen = txtCTHoTen.getText().toString();
-            String email = txtCTEmail.getText().toString();
-            String sdt = txtCTSDT.getText().toString();
-            String content = txtCTContent.getText().toString();
-
-            ContactApiService apiService = RetrofitClient.getInstance();
-            if (apiService == null) {
-                Log.e("RetrofitClient", "LỖI: Retrofit chưa được khởi tạo!");
-                return;
-            }
-
-            if (hoTen.isEmpty() || email.isEmpty() || sdt.isEmpty() || content.isEmpty()) {
-                Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-            }
-            else if (!emailCheck(email)) {
-                Toast.makeText(this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
-            }
-
-            ContactRequest request = new ContactRequest(hoTen, email, sdt, content);
-            apiService.sendContact(request).enqueue(new Callback<Void>() {
-                @Override
-                public void onResponse(Call<Void> call, Response<Void> response) {
-                    if (response.isSuccessful()) {
-                        Toast.makeText(Contact.this, "Gửi dữ liệu thành công!", Toast.LENGTH_SHORT).show();
-                        Log.d("RetrofitClient", "Gửi liên hệ thành công!");
-                    } else {
-                        Toast.makeText(Contact.this, "Lỗi gửi liên hệ! Mã lỗi: " + response.code(), Toast.LENGTH_SHORT).show();
-                        Log.e("RetrofitClient", "Lỗi gửi liên hệ! Mã lỗi: " + response.code());
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Void> call, Throwable t) {
-                    Log.e("RetrofitClient", "Lỗi API: " + t.getMessage());
-                }
-            });
-        });
+        btnCTGui.setOnClickListener(v -> sendContact());
 
         btnCTTrangChu.setOnClickListener(v -> {
             finish();
@@ -97,5 +59,44 @@ public class Contact extends AppCompatActivity {
     private boolean emailCheck(String email) {
         String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
         return email.matches(emailRegex);
+    }
+
+    private void sendContact() {
+        Log.d("RetrofitClient", "Bắt đầu gọi API...");
+        String hoTen = txtCTHoTen.getText().toString();
+        String email = txtCTEmail.getText().toString();
+        String sdt = txtCTSDT.getText().toString();
+        String content = txtCTContent.getText().toString();
+
+        ContactApiService apiService = RetrofitClient.getInstance();
+        if (apiService == null) {
+            Log.e("RetrofitClient", "LỖI: Retrofit chưa được khởi tạo!");
+            return;
+        }
+
+        if (hoTen.isEmpty() || email.isEmpty() || sdt.isEmpty() || content.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+        } else if (!emailCheck(email)) {
+            Toast.makeText(this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
+        }
+
+        ContactRequest request = new ContactRequest(hoTen, email, sdt, content);
+        apiService.sendContact(request).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(Contact.this, "Gửi dữ liệu thành công!", Toast.LENGTH_SHORT).show();
+                    Log.d("RetrofitClient", "Gửi liên hệ thành công!");
+                } else {
+                    Toast.makeText(Contact.this, "Lỗi gửi liên hệ! Mã lỗi: " + response.code(), Toast.LENGTH_SHORT).show();
+                    Log.e("RetrofitClient", "Lỗi gửi liên hệ! Mã lỗi: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("RetrofitClient", "Lỗi API: " + t.getMessage());
+            }
+        });
     }
 }
