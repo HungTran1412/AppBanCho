@@ -48,13 +48,13 @@ dependencies {
     // Lifecycle
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0") // Cập nhật mới nhất
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0") // Cập nhật mới nhất
-    implementation("androidx.activity:activity-ktx:1.9.0") // Cập nhật mới nhất
+    implementation("androidx.activity:activity-ktx:1.9.0")
+    implementation(libs.play.services.maps) // Cập nhật mới nhất
 
     // Unit Test
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
     // Retrofit (Dùng để gọi API)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")

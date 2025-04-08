@@ -7,10 +7,18 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import dev.mhung.ltmobile.petapplication.request.ContactRequest;
 import dev.mhung.ltmobile.petapplication.retrofit.RetrofitClient;
@@ -19,10 +27,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Contact extends AppCompatActivity {
-    Button btnCTTrangChu, btnCTGui;
-    EditText txtCTHoTen, txtCTEmail, txtCTSDT, txtCTContent, txtCTDiaChi;
-
+public class Contact extends AppCompatActivity{
+    private Button btnCTTrangChu, btnCTGui;
+    private EditText txtCTHoTen, txtCTEmail, txtCTSDT, txtCTContent, txtCTDiaChi;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +105,7 @@ public class Contact extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(Contact.this, "Lỗi API: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("RetrofitClient", "Lỗi API: " + t.getMessage());
             }
         });
@@ -112,4 +121,6 @@ public class Contact extends AppCompatActivity {
         txtCTDiaChi.setText("");
         txtCTHoTen.requestFocus();
     }
+
+
 }

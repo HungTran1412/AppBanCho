@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -17,103 +18,107 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
+
     <!-- Nút trang chủ -->
     <Button
         android:id="@+id/btnCTTrangChu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Trang chủ"
-        android:textSize="16sp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#002a47"
-        android:layout_marginTop="16dp"/>
+        android:text="Trang chủ"
+        android:textSize="16sp" />
 
     <!-- Họ tên -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Họ tên:"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/txtCTHoTen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Nhập họ tên"
         android:inputType="text"
-        android:textSize="20sp"
-        android:hint="Nhập họ tên"/>
+        android:textSize="20sp" />
 
     <!-- Email -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Email:"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/txtCTEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Nhập email"
         android:inputType="textEmailAddress"
-        android:textSize="20sp"
-        android:hint="Nhập email"/>
+        android:textSize="20sp" />
 
     <!-- Số điện thoại -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="SĐT:"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/txtCTSDT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Nhập số điện thoại"
         android:inputType="phone"
-        android:textSize="20sp"
-        android:hint="Nhập số điện thoại"/>
+        android:textSize="20sp" />
 
+    <!-- Địa chỉ -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Địa chỉ:"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+        android:textSize="20sp" />
+
     <EditText
         android:id="@+id/txtCTDiaChi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Nhập địa chỉ"
         android:inputType="text"
-        android:textSize="20sp"
-        android:hint="Nhập địa chỉ"/>
+        android:textSize="20sp" />
+
     <!-- Nội dung -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Nội dung:"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/txtCTContent"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:inputType="textMultiLine"
-        android:textSize="20sp"
-        android:hint="Nhập nội dung"
+        android:background="@android:drawable/editbox_background"
         android:gravity="top"
-        android:background="@android:drawable/editbox_background"/>
+        android:hint="Nhập nội dung"
+        android:inputType="textMultiLine"
+        android:textSize="20sp" />
 
     <!-- Nút gửi -->
     <Button
         android:id="@+id/btnCTGui"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Gửi"
-        android:textSize="24sp"
         android:layout_marginTop="24dp"
         android:backgroundTint="#002a47"
-        android:textColor="#FFFFFF"/>
+        android:text="Gửi"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
 </LinearLayout>
