@@ -49,7 +49,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0") // Cập nhật mới nhất
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0") // Cập nhật mới nhất
     implementation("androidx.activity:activity-ktx:1.9.0")
-    implementation(libs.play.services.maps) // Cập nhật mới nhất
+    implementation(libs.play.services.maps)
+    implementation(libs.activity) // Cập nhật mới nhất
 
     // Unit Test
     testImplementation("junit:junit:4.13.2")

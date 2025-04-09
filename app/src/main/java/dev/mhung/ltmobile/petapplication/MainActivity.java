@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void addEvents() {
-        btnGioiThieu.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, Introduce.class));
-        btnKhamPha.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, Product.class));
+        btnGioiThieu.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, IntroduceController.class));
+        btnKhamPha.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, ProductController.class));
 
         // Xử lý khi bấm vào các mục trong NavigationView
         navMenu.setNavigationItemSelectedListener(this);
@@ -93,13 +93,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         try {
             if(id == R.id.nav_sanpham){
-                SwitchScreen.switchScreen(MainActivity.this, Product.class);
+                SwitchScreen.switchScreen(MainActivity.this, ProductController.class);
             }else if(id == R.id.nav_gioithieu){
-                SwitchScreen.switchScreen(MainActivity.this, Introduce.class);
+                SwitchScreen.switchScreen(MainActivity.this, IntroduceController.class);
             }else if(id == R.id.nav_lienhe){
-                SwitchScreen.switchScreen(MainActivity.this, Contact.class);
+                SwitchScreen.switchScreen(MainActivity.this, ContactController.class);
             } else if (id == R.id.nav_dangnhap) {
-                SwitchScreen.switchScreen(MainActivity.this, Login.class);
+                SwitchScreen.switchScreen(MainActivity.this, LoginController.class);
             }
         } catch (Exception e) {
             Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();

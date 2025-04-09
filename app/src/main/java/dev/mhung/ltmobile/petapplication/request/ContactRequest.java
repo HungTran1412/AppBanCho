@@ -1,7 +1,5 @@
 package dev.mhung.ltmobile.petapplication.request;
 
-import dev.mhung.ltmobile.petapplication.service.ContactApiService;
-
 public class ContactRequest {
     private String fullName;
     private String email;

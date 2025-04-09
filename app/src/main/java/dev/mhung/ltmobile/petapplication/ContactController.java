@@ -7,19 +7,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
+import dev.mhung.ltmobile.petapplication.model.CheckEmail;
 import dev.mhung.ltmobile.petapplication.request.ContactRequest;
 import dev.mhung.ltmobile.petapplication.retrofit.RetrofitClient;
 import dev.mhung.ltmobile.petapplication.service.ContactApiService;
@@ -27,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Contact extends AppCompatActivity{
+public class ContactController extends AppCompatActivity{
     private Button btnCTTrangChu, btnCTGui;
     private EditText txtCTHoTen, txtCTEmail, txtCTSDT, txtCTContent, txtCTDiaChi;
     
@@ -65,11 +58,6 @@ public class Contact extends AppCompatActivity{
         txtCTDiaChi = findViewById(R.id.txtCTDiaChi);
     }
 
-    private boolean emailCheck(String email) {
-        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
-        return email.matches(emailRegex);
-    }
-
     private void sendContact() {
         Log.d("RetrofitClient", "Bắt đầu gọi API...");
         String hoTen = txtCTHoTen.getText().toString();
@@ -86,7 +74,7 @@ public class Contact extends AppCompatActivity{
 
         if (hoTen.isEmpty() || email.isEmpty() || sdt.isEmpty() || content.isEmpty()) {
             Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-        } else if (!emailCheck(email)) {
+        } else if (!CheckEmail.emailCheck(email)) {
             Toast.makeText(this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
         }
 
@@ -95,17 +83,17 @@ public class Contact extends AppCompatActivity{
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(Contact.this, "Gửi dữ liệu thành công!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ContactController.this, "Gửi dữ liệu thành công!", Toast.LENGTH_SHORT).show();
                     Log.d("RetrofitClient", "Gửi liên hệ thành công!");
                 } else {
-                    Toast.makeText(Contact.this, "Lỗi gửi liên hệ! Mã lỗi: " + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ContactController.this, "Lỗi gửi liên hệ! Mã lỗi: " + response.code(), Toast.LENGTH_SHORT).show();
                     Log.e("RetrofitClient", "Lỗi gửi liên hệ! Mã lỗi: " + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(Contact.this, "Lỗi API: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ContactController.this, "Lỗi API: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("RetrofitClient", "Lỗi API: " + t.getMessage());
             }
         });
