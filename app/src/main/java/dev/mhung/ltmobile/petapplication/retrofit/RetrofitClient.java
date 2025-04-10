@@ -2,6 +2,7 @@ package dev.mhung.ltmobile.petapplication.retrofit;
 
 import dev.mhung.ltmobile.petapplication.service.ContactApiService;
 import dev.mhung.ltmobile.petapplication.service.LoginApiService;
+import dev.mhung.ltmobile.petapplication.service.ProductApiService;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -29,5 +30,10 @@ public class RetrofitClient {
     public static LoginApiService login(){
         getClient();
         return retrofit.create(LoginApiService.class);
+    }
+
+    public static ProductApiService product(){
+        getClient();
+        return retrofit.create(ProductApiService.class);
     }
 }
