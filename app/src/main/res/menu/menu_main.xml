@@ -1,5 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/nav_trangchu"
+        android:title="Trang chủ"
+        android:icon="@drawable/home"/>
+    <item
         android:id="@+id/nav_sanpham"
         android:title="Sản phẩm"
         android:icon="@drawable/product"/>

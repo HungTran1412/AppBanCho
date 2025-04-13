@@ -2,17 +2,28 @@ package dev.mhung.ltmobile.petapplication;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+
 import android.widget.Toast;
 
+
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
+import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
 
 import dev.mhung.ltmobile.petapplication.model.CheckEmail;
+import dev.mhung.ltmobile.petapplication.model.SwitchScreen;
 import dev.mhung.ltmobile.petapplication.request.ContactRequest;
 import dev.mhung.ltmobile.petapplication.retrofit.RetrofitClient;
 import dev.mhung.ltmobile.petapplication.service.ContactApiService;
@@ -20,10 +31,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ContactController extends AppCompatActivity{
-    private Button btnCTTrangChu, btnCTGui;
-    private EditText txtCTHoTen, txtCTEmail, txtCTSDT, txtCTContent, txtCTDiaChi;
-    
+public class ContactController extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    Button btnCTGui;
+    EditText txtCTHoTen, txtCTEmail, txtCTSDT, txtCTContent, txtCTDiaChi;
+    Toolbar tbrManHinhChinh;
+    NavigationView navMenu;
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle toggle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,14 +56,10 @@ public class ContactController extends AppCompatActivity{
 
     private void addEvents() {
         btnCTGui.setOnClickListener(v -> sendContact());
-
-        btnCTTrangChu.setOnClickListener(v -> {
-            finish();
-        });
+        navMenu.setNavigationItemSelectedListener(this);
     }
 
     private void addViews() {
-        btnCTTrangChu = findViewById(R.id.btnCTTrangChu);
         btnCTGui = findViewById(R.id.btnCTGui);
 
         txtCTHoTen = findViewById(R.id.txtCTHoTen);
@@ -56,6 +67,19 @@ public class ContactController extends AppCompatActivity{
         txtCTSDT = findViewById(R.id.txtCTSDT);
         txtCTContent = findViewById(R.id.txtCTContent);
         txtCTDiaChi = findViewById(R.id.txtCTDiaChi);
+
+        navMenu = findViewById(R.id.navMenu);
+        drawerLayout = findViewById(R.id.drawer_layout);
+
+        tbrManHinhChinh = findViewById(R.id.tbrManHinhChinh);
+        setSupportActionBar(tbrManHinhChinh);
+        toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, tbrManHinhChinh,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
     }
 
     private void sendContact() {
@@ -110,5 +134,26 @@ public class ContactController extends AppCompatActivity{
         txtCTHoTen.requestFocus();
     }
 
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        try {
+            if(id == R.id.nav_sanpham){
+                SwitchScreen.switchScreen(ContactController.this, ProductController.class);
+            }else if(id == R.id.nav_gioithieu){
+                SwitchScreen.switchScreen(ContactController.this, IntroduceController.class);
+            }else if(id == R.id.nav_trangchu){
+                SwitchScreen.switchScreen(ContactController.this, MainActivity.class);
+            } else if (id == R.id.nav_dangnhap) {
+                SwitchScreen.switchScreen(ContactController.this, LoginController.class);
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.e("MainActivity", "Lỗi khi chuyển sang màn hình: " + e.getMessage());
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
 }

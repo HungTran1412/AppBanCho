@@ -1,124 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <!-- Tiêu đề -->
-    <TextView
-        android:id="@+id/textView3"
+    <!-- Nội dung chính -->
+    <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fcefd4"
-        android:gravity="center"
-        android:text="Liên Hệ"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tbrManHinhChinh"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Liên hệ"
+            app:titleTextColor="#000000"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            app:navigationIcon="@drawable/menu" />
 
-    <!-- Nút trang chủ -->
-    <Button
-        android:id="@+id/btnCTTrangChu"
+        <!-- Các thành phần còn lại như bạn đã viết -->
+        <!-- Họ tên -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Họ tên:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/txtCTHoTen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập họ tên"
+            android:inputType="text"
+            android:textSize="20sp" />
+
+        <!-- Email -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Email:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/txtCTEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập email"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp" />
+
+        <!-- SĐT -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="SĐT:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/txtCTSDT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập số điện thoại"
+            android:inputType="phone"
+            android:textSize="20sp" />
+
+        <!-- Địa chỉ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Địa chỉ:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/txtCTDiaChi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập địa chỉ"
+            android:inputType="text"
+            android:textSize="20sp" />
+
+        <!-- Nội dung -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Nội dung:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/txtCTContent"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@android:drawable/editbox_background"
+            android:gravity="top"
+            android:hint="Nhập nội dung"
+            android:inputType="textMultiLine"
+            android:textSize="20sp" />
+
+        <!-- Nút gửi -->
+        <Button
+            android:id="@+id/btnCTGui"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#002a47"
+            android:text="Gửi"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <!-- Navigation Drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navMenu"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#002a47"
-        android:text="Trang chủ"
-        android:textSize="16sp" />
-
-    <!-- Họ tên -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Họ tên:"
-        android:textSize="20sp" />
-
-    <EditText
-        android:id="@+id/txtCTHoTen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nhập họ tên"
-        android:inputType="text"
-        android:textSize="20sp" />
-
-    <!-- Email -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Email:"
-        android:textSize="20sp" />
-
-    <EditText
-        android:id="@+id/txtCTEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nhập email"
-        android:inputType="textEmailAddress"
-        android:textSize="20sp" />
-
-    <!-- Số điện thoại -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="SĐT:"
-        android:textSize="20sp" />
-
-    <EditText
-        android:id="@+id/txtCTSDT"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nhập số điện thoại"
-        android:inputType="phone"
-        android:textSize="20sp" />
-
-    <!-- Địa chỉ -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Địa chỉ:"
-        android:textSize="20sp" />
-
-    <EditText
-        android:id="@+id/txtCTDiaChi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nhập địa chỉ"
-        android:inputType="text"
-        android:textSize="20sp" />
-
-    <!-- Nội dung -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Nội dung:"
-        android:textSize="20sp" />
-
-    <EditText
-        android:id="@+id/txtCTContent"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@android:drawable/editbox_background"
-        android:gravity="top"
-        android:hint="Nhập nội dung"
-        android:inputType="textMultiLine"
-        android:textSize="20sp" />
-
-    <!-- Nút gửi -->
-    <Button
-        android:id="@+id/btnCTGui"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#002a47"
-        android:text="Gửi"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/menu_main" />
+</androidx.drawerlayout.widget.DrawerLayout>
