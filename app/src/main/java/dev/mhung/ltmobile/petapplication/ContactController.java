@@ -1,11 +1,14 @@
 package dev.mhung.ltmobile.petapplication;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -32,8 +35,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ContactController extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    Button btnCTGui;
+    Button btnCTGui, btnCTGoi;
     EditText txtCTHoTen, txtCTEmail, txtCTSDT, txtCTContent, txtCTDiaChi;
+    TextView lblCTHotLine;
     Toolbar tbrManHinhChinh;
     NavigationView navMenu;
     DrawerLayout drawerLayout;
@@ -56,11 +60,26 @@ public class ContactController extends AppCompatActivity implements NavigationVi
 
     private void addEvents() {
         btnCTGui.setOnClickListener(v -> sendContact());
+        btnCTGoi.setOnClickListener(v -> {
+            String hotLine = lblCTHotLine.getText().toString();
+            for(int i = 0; i < hotLine.length(); i++){
+                if(hotLine.charAt(i) == ':'){
+                    hotLine = hotLine.substring(i + 1);
+                    break;
+                }
+            }
+//            Toast.makeText(this, hotLine, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + hotLine));
+            startActivity(intent);
+        });
         navMenu.setNavigationItemSelectedListener(this);
     }
 
     private void addViews() {
         btnCTGui = findViewById(R.id.btnCTGui);
+        btnCTGoi = (Button)findViewById(R.id.btnCTGoi);
+
+        lblCTHotLine = (TextView)findViewById(R.id.lblCTHotLine);
 
         txtCTHoTen = findViewById(R.id.txtCTHoTen);
         txtCTEmail = findViewById(R.id.txtCTEmail);

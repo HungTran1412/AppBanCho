@@ -116,6 +116,26 @@
             android:text="Gửi"
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/lblCTHotLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30px"
+            android:text="Hotline: 0987654321"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnCTGoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="600px"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#002a47"
+            android:text="Gọi ngay"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
     </LinearLayout>
 
     <!-- Navigation Drawer -->
