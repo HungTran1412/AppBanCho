@@ -2,15 +2,23 @@ package dev.mhung.ltmobile.petapplication;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
+import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
 
 import dev.mhung.ltmobile.petapplication.model.CheckEmail;
 import dev.mhung.ltmobile.petapplication.model.SwitchScreen;
@@ -21,11 +29,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginController extends AppCompatActivity {
+public class LoginController extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    Button btnLoginHome, btnLoginLogin;
+    Button btnLoginLogin;
     TextView txtLoginEmail, txtLoginPassword;
-
+    Toolbar toolbar;
+    NavigationView navMenu;
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,16 +92,50 @@ public class LoginController extends AppCompatActivity {
                 }
             });
         });
-
-        btnLoginHome.setOnClickListener(v -> SwitchScreen.switchScreen(LoginController.this, MainActivity.class));
+    
+        navMenu.setNavigationItemSelectedListener(this);
+//        btnLoginHome.setOnClickListener(v -> SwitchScreen.switchScreen(LoginController.this, MainActivity.class));
     }
 
     private void addViews() {
-        btnLoginHome = findViewById(R.id.btnLoginHome);
+//        btnLoginHome = findViewById(R.id.btnLoginHome);
         btnLoginLogin = findViewById(R.id.btnLoginLogin);
         txtLoginEmail = findViewById(R.id.txtLoginEmail);
         txtLoginPassword = findViewById(R.id.txtLoginPassword);
+
+        navMenu = findViewById(R.id.navMenu);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
 
+        try {
+            if(id == R.id.nav_sanpham){
+                SwitchScreen.switchScreen(LoginController.this, ProductController.class);
+            }else if(id == R.id.nav_gioithieu){
+                SwitchScreen.switchScreen(LoginController.this, IntroduceController.class);
+            }else if(id == R.id.nav_trangchu){
+                SwitchScreen.switchScreen(LoginController.this, MainActivity.class);
+            } else if (id == R.id.nav_lienhe) {
+                SwitchScreen.switchScreen(LoginController.this, ContactController.class);
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.e("MainActivity", "Lỗi khi chuyển sang màn hình: " + e.getMessage());
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }
