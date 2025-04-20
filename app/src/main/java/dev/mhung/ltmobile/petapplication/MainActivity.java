@@ -28,7 +28,7 @@ import dev.mhung.ltmobile.petapplication.model.SwitchScreen;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar tbrManHinhChinh;
     ViewFlipper vflManHinhChinh;
-    RecyclerView rcvDanhSach;
+    ListView lsvDanhSach;
     NavigationView navMenu;
     ListView lsvManHinhChinh;
     Button btnGioiThieu, btnKhamPha;
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(tbrManHinhChinh); // Đặt Toolbar làm ActionBar
 
         vflManHinhChinh = findViewById(R.id.vflManHinhChinh);
-        rcvDanhSach = findViewById(R.id.rcvDanhSach);
+        lsvDanhSach = findViewById(R.id.lsvDanhSach);
         navMenu = findViewById(R.id.navMenu);
         btnGioiThieu = findViewById(R.id.btnGioiThieu);
         btnKhamPha = findViewById(R.id.btnKhamPha);

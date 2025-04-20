@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/lsvProduct"
+        android:id="@+id/lsvDanhSach"
         android:layout_width="409dp"
         android:layout_height="885dp"
         tools:layout_editor_absoluteX="1dp"

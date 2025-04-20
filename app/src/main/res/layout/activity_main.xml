@@ -142,11 +142,11 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rcvDanhSach"
+                    <ListView
+                        android:id="@+id/lsvDanhSach"
                         android:layout_width="match_parent"
                         android:layout_height="500dp"
-                        android:layout_margin="10dp" />
+                        android:layout_margin="10dp"/>
 
                 </LinearLayout>
             </LinearLayout>

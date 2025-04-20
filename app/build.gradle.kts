@@ -52,6 +52,10 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.activity) // Cập nhật mới nhất
 
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
+
     // Unit Test
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
