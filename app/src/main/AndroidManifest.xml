@@ -17,6 +17,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".CartController"
+            android:exported="false" />
+        <activity
             android:name=".AdministrationController"
             android:exported="false" />
         <activity
