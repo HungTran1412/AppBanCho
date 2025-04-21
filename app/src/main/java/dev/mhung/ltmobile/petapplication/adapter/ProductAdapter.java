@@ -47,8 +47,17 @@ public class ProductAdapter extends ArrayAdapter<ProductResponse> {
 //        TextView tvDescription = convertView.findViewById(R.id.tvProductDescription);
         ImageView imgProduct = convertView.findViewById(R.id.imgProduct);
 
+        //Tách chuỗi tên sản phẩm
+        String name = product.getName();
+
+        for(int i = 0; i < name.length(); i++){
+            if(name.charAt(i) == '-'){
+                name = name.substring(i + 1);
+                break;
+            }
+        }
         // Gán dữ liệu
-        tvName.setText("Tên: " + product.getName());
+        tvName.setText("Tên: " + name);
         tvAge.setText("Tuổi: " + product.getAge());
         tvPrice.setText("Giá: " + product.getPrice() + " VNĐ");
         tvGender.setText("Giống: " + (product.getBreed() != null ? product.getBreed() : "Chưa rõ"));
