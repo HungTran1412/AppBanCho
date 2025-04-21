@@ -1,16 +1,19 @@
 package dev.mhung.ltmobile.petapplication.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
@@ -48,14 +51,18 @@ public class ProductAdapter extends ArrayAdapter<ProductResponse> {
         tvName.setText("Tên: " + product.getName());
         tvAge.setText("Tuổi: " + product.getAge());
         tvPrice.setText("Giá: " + product.getPrice() + " VNĐ");
-        tvGender.setText("Giống: " + product.getGender());
+        tvGender.setText("Giống: " + (product.getGender() != null ? product.getGender() : "Chưa rõ"));
         tvDescription.setText(product.getDescription());
 
         // Load ảnh bằng Glide
+
         Glide.with(context)
-                .load(product.getImg()) // URL hoặc đường dẫn ảnh
-                .placeholder(R.drawable.ic_launcher_foreground) // ảnh mặc định khi loading
+                .load(product.getImg()) // URL hình ảnh
+                .placeholder(R.drawable.loading) // hình tạm khi đang tải
+                .error(R.drawable.error) // hình khi lỗi
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imgProduct);
+//        Toast.makeText(context, "img: "+ product.getImg(), Toast.LENGTH_SHORT).show();
 
         return convertView;
     }

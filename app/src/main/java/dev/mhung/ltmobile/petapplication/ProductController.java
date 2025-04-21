@@ -2,6 +2,7 @@ package dev.mhung.ltmobile.petapplication;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class ProductController extends AppCompatActivity {
     private ListView lsvDanhSach;
     private ProductAdapter adapter;
     private List<ProductResponse> productList;
+    private ImageView imgProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class ProductController extends AppCompatActivity {
 
     private void addViews() {
         lsvDanhSach = (ListView)findViewById(R.id.lsvDanhSach);
+        imgProduct = (ImageView)findViewById(R.id.imgProduct);
 //        adapter = new ProductAdapter(this, productList);
 //        lsvDanhSach.setAdapter(adapter);
     }
