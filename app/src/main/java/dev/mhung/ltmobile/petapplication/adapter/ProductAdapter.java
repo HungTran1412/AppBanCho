@@ -44,7 +44,7 @@ public class ProductAdapter extends ArrayAdapter<ProductResponse> {
         TextView tvAge = convertView.findViewById(R.id.tvProductAge);
         TextView tvPrice = convertView.findViewById(R.id.tvProductPrice);
         TextView tvGender = convertView.findViewById(R.id.tvProductGender);
-        TextView tvDescription = convertView.findViewById(R.id.tvProductDescription);
+//        TextView tvDescription = convertView.findViewById(R.id.tvProductDescription);
         ImageView imgProduct = convertView.findViewById(R.id.imgProduct);
 
         // Gán dữ liệu
@@ -52,7 +52,7 @@ public class ProductAdapter extends ArrayAdapter<ProductResponse> {
         tvAge.setText("Tuổi: " + product.getAge());
         tvPrice.setText("Giá: " + product.getPrice() + " VNĐ");
         tvGender.setText("Giống: " + (product.getBreed() != null ? product.getBreed() : "Chưa rõ"));
-        tvDescription.setText(product.getDescription());
+//        tvDescription.setText(product.getDescription());
 
         // Load ảnh bằng Glide
 

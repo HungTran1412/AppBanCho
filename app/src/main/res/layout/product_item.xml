@@ -61,15 +61,15 @@
                 android:textSize="16sp"
                 android:textColor="#444444" />
 
-            <TextView
-                android:id="@+id/tvProductDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Một chú chó đáng yêu và thân thiện."
-                android:textSize="15sp"
-                android:textColor="#666666"
-                android:maxLines="3"
-                android:ellipsize="end" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvProductDescription"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Một chú chó đáng yêu và thân thiện."-->
+<!--                android:textSize="15sp"-->
+<!--                android:textColor="#666666"-->
+<!--                android:maxLines="3"-->
+<!--                android:ellipsize="end" />-->
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
