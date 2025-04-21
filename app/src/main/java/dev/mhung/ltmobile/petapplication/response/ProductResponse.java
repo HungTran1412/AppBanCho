@@ -8,7 +8,7 @@ public class ProductResponse {
     private int quantity;
     private String img;
     private String description;
-    private String gender;
+    private String breed;
 
     public ProductResponse() {
     }
@@ -69,11 +69,11 @@ public class ProductResponse {
         this.description = description;
     }
 
-    public String getGender() {
-        return gender;
+    public String getBreed() {
+        return breed;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setBreed(String breed) {
+        this.breed = breed;
     }
 }

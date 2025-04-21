@@ -51,7 +51,7 @@ public class ProductAdapter extends ArrayAdapter<ProductResponse> {
         tvName.setText("Tên: " + product.getName());
         tvAge.setText("Tuổi: " + product.getAge());
         tvPrice.setText("Giá: " + product.getPrice() + " VNĐ");
-        tvGender.setText("Giống: " + (product.getGender() != null ? product.getGender() : "Chưa rõ"));
+        tvGender.setText("Giống: " + (product.getBreed() != null ? product.getBreed() : "Chưa rõ"));
         tvDescription.setText(product.getDescription());
 
         // Load ảnh bằng Glide
