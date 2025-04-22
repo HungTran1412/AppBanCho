@@ -1,6 +1,7 @@
 package dev.mhung.ltmobile.petapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
+import dev.mhung.ltmobile.petapplication.DetailController;
 import dev.mhung.ltmobile.petapplication.R;
 import dev.mhung.ltmobile.petapplication.response.ProductResponse;
 
@@ -72,6 +74,22 @@ public class ProductAdapter extends ArrayAdapter<ProductResponse> {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imgProduct);
 //        Toast.makeText(context, "img: "+ product.getImg(), Toast.LENGTH_SHORT).show();
+
+        String finalName = name;
+        imgProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailController.class);
+                intent.putExtra("image_url", product.getImg());
+                intent.putExtra("name", finalName);
+                intent.putExtra("price", product.getPrice());
+                intent.putExtra("age", product.getAge());
+                intent.putExtra("breed", product.getBreed());
+                intent.putExtra("des", product.getDescription() != null ? product.getDescription() : "Không có mô tả");
+
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

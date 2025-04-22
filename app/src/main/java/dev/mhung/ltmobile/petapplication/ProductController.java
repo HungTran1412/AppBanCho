@@ -116,6 +116,8 @@ public class ProductController extends AppCompatActivity implements NavigationVi
                 SwitchScreen.switchScreen(ProductController.this, MainActivity.class);
             } else if (id == R.id.nav_lienhe) {
                 SwitchScreen.switchScreen(ProductController.this, ContactController.class);
+            }else if(id == R.id.nav_cart){
+                SwitchScreen.switchScreen(ProductController.this, CartController.class);
             }
         } catch (Exception e) {
             Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();

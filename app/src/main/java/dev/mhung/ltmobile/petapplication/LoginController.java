@@ -129,6 +129,8 @@ public class LoginController extends AppCompatActivity implements NavigationView
                 SwitchScreen.switchScreen(LoginController.this, MainActivity.class);
             } else if (id == R.id.nav_lienhe) {
                 SwitchScreen.switchScreen(LoginController.this, ContactController.class);
+            }else if(id == R.id.nav_cart){
+                SwitchScreen.switchScreen(LoginController.this, CartController.class);
             }
         } catch (Exception e) {
             Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();

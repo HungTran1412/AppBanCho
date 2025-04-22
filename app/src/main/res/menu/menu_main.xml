@@ -9,6 +9,10 @@
         android:icon="@drawable/product"/>
 
     <item
+        android:id="@+id/nav_cart"
+        android:title="Giỏ hàng"
+        android:icon="@drawable/carrt"/>
+    <item
         android:id="@+id/nav_gioithieu"
         android:title="Giới thiệu"
         android:icon="@drawable/introduction"/>

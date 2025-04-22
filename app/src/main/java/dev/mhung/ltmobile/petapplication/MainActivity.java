@@ -100,6 +100,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 SwitchScreen.switchScreen(MainActivity.this, ContactController.class);
             } else if (id == R.id.nav_dangnhap) {
                 SwitchScreen.switchScreen(MainActivity.this, LoginController.class);
+            }else if(id == R.id.nav_cart){
+                SwitchScreen.switchScreen(MainActivity.this, CartController.class);
             }
         } catch (Exception e) {
             Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();

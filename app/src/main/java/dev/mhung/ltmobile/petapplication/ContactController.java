@@ -165,6 +165,8 @@ public class ContactController extends AppCompatActivity implements NavigationVi
                 SwitchScreen.switchScreen(ContactController.this, MainActivity.class);
             } else if (id == R.id.nav_dangnhap) {
                 SwitchScreen.switchScreen(ContactController.this, LoginController.class);
+            }else if(id == R.id.nav_cart){
+                SwitchScreen.switchScreen(ContactController.this, CartController.class);
             }
         } catch (Exception e) {
             Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
