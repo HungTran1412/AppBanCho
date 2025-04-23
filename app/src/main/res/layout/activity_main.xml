@@ -103,7 +103,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="20dp"
                                 android:backgroundTint="#FFFFFF"
-                                android:text="Giới Thiệu"
+                                android:text="Giỏ Hàng"
                                 android:textColor="#000000" />
 
                             <Button
