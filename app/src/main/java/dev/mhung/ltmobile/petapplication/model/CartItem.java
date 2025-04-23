@@ -5,6 +5,7 @@ public class CartItem {
     private String name;
     private int price;
     private int quantity;
+    private String breed;
     private String imageUrl;
 
     public CartItem() {
@@ -63,5 +64,13 @@ public class CartItem {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
     }
 }

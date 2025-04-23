@@ -60,11 +60,11 @@ public class CartController extends AppCompatActivity {
         updateTotalMoney();
 
         btnDatHang.setOnClickListener(v -> {
-//            if (cartItems != null && !cartItems.isEmpty()) {
-//                cartDao.updateAllItems(cartItems);
-//            } else {
-//                Log.e("CartController", "Giỏ hàng trống, không thể cập nhật");
-//            }
+            if (cartItems != null && !cartItems.isEmpty()) {
+                cartDao.updateAllItems(cartItems);
+            } else {
+                Log.e("CartController", "Giỏ hàng trống, không thể cập nhật");
+            }
 
             SwitchScreen.switchScreen(CartController.this, OrdersController.class);
         });
@@ -86,6 +86,6 @@ public class CartController extends AppCompatActivity {
         recyclerViewGioHang = findViewById(R.id.recyclerViewGioHang);
         btnDatHang = findViewById(R.id.btnDatHang);
 
-        recyclerViewGioHang.setLayoutManager(new LinearLayoutManager(this));  // Sử dụng LinearLayoutManager cho RecyclerView
+        recyclerViewGioHang.setLayoutManager(new LinearLayoutManager(this));
     }
 }

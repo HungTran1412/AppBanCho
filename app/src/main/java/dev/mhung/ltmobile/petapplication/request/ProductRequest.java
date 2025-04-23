@@ -5,7 +5,7 @@ public class ProductRequest {
     private String name;
     private int age;
     private int price;
-    private int quantity;
+    private Object quantity;
     private String img;
     private String description;
     private String gender;
@@ -53,11 +53,12 @@ public class ProductRequest {
         this.price = price;
     }
 
-    public int getQuantity() {
+
+    public Object getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Object quantity) {
         this.quantity = quantity;
     }
 
