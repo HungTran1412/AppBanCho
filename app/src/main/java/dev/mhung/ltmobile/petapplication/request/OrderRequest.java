@@ -1,5 +1,6 @@
 package dev.mhung.ltmobile.petapplication.request;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import dev.mhung.ltmobile.petapplication.OrdersController;
@@ -11,26 +12,13 @@ public class OrderRequest {
     private String email;
     private String phone;
     private String address;
-    private String totalAmount;
+    private long totalAmount;
     private String status;
     private String note;
     private String payment;
-    private List<OrderDetailRequest> orderDetails;
+    private List<OrderDetailRequest> orderDetail;
 
     public OrderRequest(){}
-    public OrderRequest(String orderId, String orderDate, String fullName, String email, String phone, String address, String totalAmount, String status, String note, String payment, List<OrderDetailRequest> orderDetails) {
-        this.orderId = orderId;
-        this.orderDate = orderDate;
-        this.fullName = fullName;
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
-        this.totalAmount = totalAmount;
-        this.status = status;
-        this.note = note;
-        this.payment = payment;
-        this.orderDetails = orderDetails;
-    }
 
     public String getOrderId() {
         return orderId;
@@ -80,11 +68,11 @@ public class OrderRequest {
         this.address = address;
     }
 
-    public String getTotalAmount() {
+    public long getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(String totalAmount) {
+    public void setTotalAmount(long totalAmount) {
         this.totalAmount = totalAmount;
     }
 
@@ -112,11 +100,11 @@ public class OrderRequest {
         this.payment = payment;
     }
 
-    public List<OrderDetailRequest> getOrderDetails() {
-        return orderDetails;
+    public List<OrderDetailRequest> getOrderDetail() {
+        return orderDetail;
     }
 
-    public void setOrderDetails(List<OrderDetailRequest> orderDetails) {
-        this.orderDetails = orderDetails;
+    public void setOrderDetail(List<OrderDetailRequest> orderDetail) {
+        this.orderDetail = orderDetail;
     }
 }
