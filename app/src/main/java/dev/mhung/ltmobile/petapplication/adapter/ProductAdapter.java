@@ -80,6 +80,7 @@ public class ProductAdapter extends ArrayAdapter<ProductResponse> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailController.class);
+                intent.putExtra("id", product.getId());
                 intent.putExtra("image_url", product.getImg());
                 intent.putExtra("name", finalName);
                 intent.putExtra("price", product.getPrice());

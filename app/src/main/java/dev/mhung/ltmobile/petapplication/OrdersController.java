@@ -67,12 +67,14 @@ public class OrdersController extends AppCompatActivity {
     }
 
     private void addEvents() {
+        //Hiển thị sản phẩm lên listview
         CartDAO cartDAO = new CartDAO(this);
         cartItems = cartDAO.getAllItems();
 
         adapter = new OrderListAdapter(this, cartItems);
         lsvCartItems.setAdapter(adapter);
 
+        //tính tổng tiền
         String[] id = new String[cartItems.size()];
         long totalPrice = 0;
         for (CartItem item : cartItems) {
@@ -91,6 +93,7 @@ public class OrdersController extends AppCompatActivity {
 
         Toast.makeText(this, Arrays.toString(id), Toast.LENGTH_SHORT).show();
 
+        //đặt hàng
         btnPlaceOrder.setOnClickListener(v -> {
 
         });

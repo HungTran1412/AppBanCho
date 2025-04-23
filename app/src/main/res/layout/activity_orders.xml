@@ -48,6 +48,15 @@
         android:padding="12dp" />
 
     <EditText
+        android:id="@+id/txtOrderEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Email"
+        android:padding="12dp" />
+
+    <EditText
         android:id="@+id/txtOrderPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,15 +72,6 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/edit_text_background"
         android:hint="Địa chỉ"
-        android:padding="12dp" />
-
-    <EditText
-        android:id="@+id/txtOrderEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/edit_text_background"
-        android:hint="Email"
         android:padding="12dp" />
 
     <EditText
@@ -121,9 +121,8 @@
     </RadioGroup>
 
 
-    <!-- TỔNG TIỀN -->
-
     <!-- NÚT ĐẶT HÀNG -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -142,7 +141,7 @@
             android:id="@+id/lblTotalPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="6.900.000 đ"
+            android:text=""
             android:textColor="#3A00E5"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -150,11 +149,11 @@
 
     <Button
         android:id="@+id/btnPlaceOrder"
-        android:text="ĐẶT HÀNG"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#3A00E5"
+        android:padding="14dp"
+        android:text="ĐẶT HÀNG"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:padding="14dp" />
+        android:textStyle="bold" />
 </LinearLayout>

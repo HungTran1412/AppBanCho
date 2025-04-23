@@ -1,5 +1,6 @@
 package dev.mhung.ltmobile.petapplication.database;
 
+import static dev.mhung.ltmobile.petapplication.database.CartDatabase.COLUMN_ID;
 import static dev.mhung.ltmobile.petapplication.database.CartDatabase.COLUMN_IMAGE_URL;
 import static dev.mhung.ltmobile.petapplication.database.CartDatabase.COLUMN_NAME;
 import static dev.mhung.ltmobile.petapplication.database.CartDatabase.COLUMN_PRICE;
@@ -11,6 +12,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,9 @@ public class CartDAO {
     public void addItem(CartItem item) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("name", item.getName());
+        values.put(COLUMN_ID, item.getId());
+        Log.e("ID:", String.valueOf(item.getId()));
+        values.put(COLUMN_NAME, item.getName());
         values.put(COLUMN_PRICE, item.getPrice());
         values.put(COLUMN_QUANTITY, item.getQuantity());
         values.put(COLUMN_IMAGE_URL, item.getImageUrl());
@@ -39,7 +43,7 @@ public class CartDAO {
         ContentValues values = new ContentValues();
         values.put(COLUMN_QUANTITY, item.getQuantity());
         db.update(TABLE_CART, values,
-                CartDatabase.COLUMN_ID + " = ?", new String[]{String.valueOf(item.getId())});
+                COLUMN_ID + " = ?", new String[]{String.valueOf(item.getId())});
         db.close();
     }
     public void updateAllItems(List<CartItem> cartItems) {
@@ -52,7 +56,7 @@ public class CartDAO {
                 values.put(COLUMN_PRICE, item.getPrice());
                 values.put(COLUMN_QUANTITY, item.getQuantity());
                 values.put(COLUMN_IMAGE_URL, item.getImageUrl());
-                db.update(TABLE_CART, values, CartDatabase.COLUMN_ID + " = ?", new String[]{String.valueOf(item.getId())});
+                db.update(TABLE_CART, values, COLUMN_ID + " = ?", new String[]{String.valueOf(item.getId())});
             }
             db.setTransactionSuccessful();
         } catch (Exception e) {
@@ -63,13 +67,18 @@ public class CartDAO {
         }
     }
 
+    //sửa
     public CartItem getItemByName(String name) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(TABLE_CART,
-                null, COLUMN_NAME + " = ?", new String[]{name}, null, null, null);
+                null,
+                COLUMN_NAME + " = ?",
+                new String[]{name.trim().toLowerCase()},
+                null, null, null);
 
         if (cursor != null && cursor.moveToFirst()) {
             CartItem item = new CartItem();
+            item.setId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)));
             item.setName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)));
             item.setPrice(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PRICE)));
             item.setQuantity(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_QUANTITY)));
@@ -78,15 +87,18 @@ public class CartDAO {
             db.close();
             return item;
         }
-        cursor.close();
+
+        if (cursor != null) cursor.close();
         db.close();
         return null;
     }
 
+
+
     public void deleteItem(int id) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.delete(TABLE_CART,
-                CartDatabase.COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+                COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
         db.close();
     }
 
@@ -99,7 +111,7 @@ public class CartDAO {
         if (cursor.moveToFirst()) {
             do {
                 CartItem item = new CartItem();
-                item.setId(cursor.getInt(cursor.getColumnIndexOrThrow(CartDatabase.COLUMN_ID)));
+                item.setId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)));
                 item.setName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)));
                 item.setPrice(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PRICE)));
                 item.setQuantity(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_QUANTITY)));

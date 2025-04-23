@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -76,6 +77,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             cartDao.updateItem(item);
             notifyItemChanged(position);
         });
+
+        holder.imgXoaCart.setOnClickListener(v -> {
+            int pos = holder.getAdapterPosition();
+            if (pos == RecyclerView.NO_POSITION) return;
+
+            cartDao.deleteItem(item.getId());
+            cartItems.remove(pos);
+            notifyItemRemoved(pos);
+            notifyItemRangeChanged(pos, cartItems.size());
+
+            Toast.makeText(context, "Đã xoá sản phẩm", Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
@@ -85,7 +98,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     public class CartViewHolder extends RecyclerView.ViewHolder {
         TextView txtTenThuCung, txtMoney, txtSoLuong, txtTongMoney;
-        ImageView imgThuCung, imgTru, imgCong;
+        ImageView imgThuCung, imgTru, imgCong, imgXoaCart;
 
         public CartViewHolder(View itemView) {
             super(itemView);
@@ -96,6 +109,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             imgThuCung = itemView.findViewById(R.id.imgThuCung);
             imgTru = itemView.findViewById(R.id.imgTru);
             imgCong = itemView.findViewById(R.id.imgCong);
+            imgXoaCart = itemView.findViewById(R.id.imgXoaCart);
         }
     }
 }

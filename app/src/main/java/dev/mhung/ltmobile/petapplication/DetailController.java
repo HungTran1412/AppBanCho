@@ -23,7 +23,7 @@ import dev.mhung.ltmobile.petapplication.model.SwitchScreen;
 
 public class DetailController extends AppCompatActivity {
 
-    TextView txtTenThuCung,txtGiaChiTiet,txtMoTaTC,txtSoLuong;
+    TextView txtTenThuCung, txtGiaChiTiet, txtMoTaTC, txtSoLuong;
     Button btnThemVaoGioHang;
 
     ImageView imgChiTiet;
@@ -46,10 +46,10 @@ public class DetailController extends AppCompatActivity {
     }
 
     private void addEvent() {
-
+        int id = getIntent().getIntExtra("id", 0);
         String name = getIntent().getStringExtra("name");
         int price = getIntent().getIntExtra("price", 0); // 0 là giá trị mặc định nếu không có
-        int age = getIntent().getIntExtra("age",0);
+        int age = getIntent().getIntExtra("age", 0);
         String breed = getIntent().getStringExtra("breed");
         String imageUrl = getIntent().getStringExtra("image_url");
         String des = getIntent().getStringExtra("des");
@@ -58,7 +58,7 @@ public class DetailController extends AppCompatActivity {
         txtGiaChiTiet.setText("Giá: " + price + " VNĐ");
         txtMoTaTC.setText("Tuổi: " + age
                 + "\nGiống: " + (breed != null ? breed : "Chưa rõ")
-                + "\n Mô tả: " + des );
+                + "\n Mô tả: " + des);
 
         // Load ảnh bằng Glide
         Glide.with(this)
@@ -70,31 +70,32 @@ public class DetailController extends AppCompatActivity {
 
         btnThemVaoGioHang.setOnClickListener(v -> {
             try {
-                String quantityString = txtSoLuong.getText().toString();
+                String quantityString = txtSoLuong.getText().toString().trim();
                 int quantity = 0;
                 if (!quantityString.isEmpty()) {
-                    quantity = Integer.parseInt(quantityString);  // Tăng số lượng lên 1 khi người dùng nhấn nút
+                    quantity = Integer.parseInt(quantityString);
                 }
-                quantity++;
-                txtSoLuong.setText(String.valueOf(quantity));
-
-                CartItem item = new CartItem(name, price, quantity, imageUrl);
-
+                String normalizedName = name.trim();
                 CartDAO cartDao = new CartDAO(DetailController.this);
-                CartItem existingItem = cartDao.getItemByName(name);
-
+                CartItem existingItem = cartDao.getItemByName(normalizedName);
                 if (existingItem != null) {
-                    existingItem.setQuantity(existingItem.getQuantity() + quantity);
+                    int newQuantity = existingItem.getQuantity() + 1;
+                    existingItem.setQuantity(newQuantity);
                     cartDao.updateItem(existingItem);
+
+                    txtSoLuong.setText(String.valueOf(newQuantity));
                 } else {
-                    cartDao.addItem(item);
+                    CartItem newItem = new CartItem(id, normalizedName, price, 1, imageUrl);
+                    cartDao.addItem(newItem);
+
+                    txtSoLuong.setText("1");
                 }
-                Toast.makeText(this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(DetailController.this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
             } catch (NumberFormatException e) {
-                Toast.makeText(this, "Số lượng không hợp lệ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailController.this, "Số lượng không hợp lệ", Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
         FrameLayout frameLayout = findViewById(R.id.cartFrameLayout);
@@ -106,7 +107,7 @@ public class DetailController extends AppCompatActivity {
     }
 
     private void addViews() {
-        txtSoLuong =(TextView) findViewById(R.id.txtSoLuong);
+        txtSoLuong = (TextView) findViewById(R.id.txtSoLuong);
         txtTenThuCung = (TextView) findViewById(R.id.txtTenThuCung);
         txtMoTaTC = (TextView) findViewById(R.id.txtMoTaTC);
         txtGiaChiTiet = (TextView) findViewById(R.id.txtGiaChiTiet);
