@@ -13,11 +13,6 @@
         android:title="Giỏ hàng"
         android:icon="@drawable/carrt"/>
     <item
-        android:id="@+id/nav_gioithieu"
-        android:title="Giới thiệu"
-        android:icon="@drawable/introduction"/>
-
-    <item
         android:id="@+id/nav_lienhe"
         android:title="Liên hệ"
         android:icon="@drawable/contact"/>

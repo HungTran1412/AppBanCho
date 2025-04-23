@@ -18,12 +18,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.gson.Gson;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import dev.mhung.ltmobile.petapplication.adapter.OrderListAdapter;
@@ -34,7 +31,6 @@ import dev.mhung.ltmobile.petapplication.model.SwitchScreen;
 import dev.mhung.ltmobile.petapplication.request.OrderDetailRequest;
 import dev.mhung.ltmobile.petapplication.request.OrderRequest;
 import dev.mhung.ltmobile.petapplication.retrofit.RetrofitClient;
-import dev.mhung.ltmobile.petapplication.service.ContactApiService;
 import dev.mhung.ltmobile.petapplication.service.OrderApiService;
 import retrofit2.Call;
 import retrofit2.Callback;

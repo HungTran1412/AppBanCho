@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void addEvents() {
-        btnGioiThieu.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, IntroduceController.class));
+        btnGioiThieu.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, CartController.class));
         btnKhamPha.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, ProductController.class));
 
         // Xử lý khi bấm vào các mục trong NavigationView
@@ -94,8 +94,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         try {
             if(id == R.id.nav_sanpham){
                 SwitchScreen.switchScreen(MainActivity.this, ProductController.class);
-            }else if(id == R.id.nav_gioithieu){
-                SwitchScreen.switchScreen(MainActivity.this, IntroduceController.class);
             }else if(id == R.id.nav_lienhe){
                 SwitchScreen.switchScreen(MainActivity.this, ContactController.class);
             } else if (id == R.id.nav_dangnhap) {

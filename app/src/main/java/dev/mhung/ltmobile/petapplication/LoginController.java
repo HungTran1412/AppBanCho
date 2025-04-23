@@ -123,8 +123,6 @@ public class LoginController extends AppCompatActivity implements NavigationView
         try {
             if(id == R.id.nav_sanpham){
                 SwitchScreen.switchScreen(LoginController.this, ProductController.class);
-            }else if(id == R.id.nav_gioithieu){
-                SwitchScreen.switchScreen(LoginController.this, IntroduceController.class);
             }else if(id == R.id.nav_trangchu){
                 SwitchScreen.switchScreen(LoginController.this, MainActivity.class);
             } else if (id == R.id.nav_lienhe) {

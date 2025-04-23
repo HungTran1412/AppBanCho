@@ -110,8 +110,6 @@ public class ProductController extends AppCompatActivity implements NavigationVi
         try {
             if(id == R.id.nav_dangnhap){
                 SwitchScreen.switchScreen(ProductController.this, LoginController.class);
-            }else if(id == R.id.nav_gioithieu){
-                SwitchScreen.switchScreen(ProductController.this, IntroduceController.class);
             }else if(id == R.id.nav_trangchu){
                 SwitchScreen.switchScreen(ProductController.this, MainActivity.class);
             } else if (id == R.id.nav_lienhe) {

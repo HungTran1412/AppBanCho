@@ -159,8 +159,6 @@ public class ContactController extends AppCompatActivity implements NavigationVi
         try {
             if(id == R.id.nav_sanpham){
                 SwitchScreen.switchScreen(ContactController.this, ProductController.class);
-            }else if(id == R.id.nav_gioithieu){
-                SwitchScreen.switchScreen(ContactController.this, IntroduceController.class);
             }else if(id == R.id.nav_trangchu){
                 SwitchScreen.switchScreen(ContactController.this, MainActivity.class);
             } else if (id == R.id.nav_dangnhap) {
