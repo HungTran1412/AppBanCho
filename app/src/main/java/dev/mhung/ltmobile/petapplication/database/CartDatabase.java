@@ -27,6 +27,7 @@ public class CartDatabase extends SQLiteOpenHelper {
     public void updateCartItem(CartItem item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put(COLUMN_ID, item.getId());
         values.put(COLUMN_NAME, item.getName());
         values.put(COLUMN_PRICE, item.getPrice());
         values.put(COLUMN_QUANTITY, item.getQuantity());
@@ -46,7 +47,7 @@ public class CartDatabase extends SQLiteOpenHelper {
         }
 
         String sql = "CREATE TABLE " + TABLE_CART + " (" +
-                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_ID + " INTEGER," +
                 COLUMN_NAME + " TEXT, " +
                 COLUMN_PRICE + " INTEGER, " +
                 COLUMN_QUANTITY + " INTEGER, " +
