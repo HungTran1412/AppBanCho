@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import androidx.activity.EdgeToEdge;
@@ -14,6 +15,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import dev.mhung.ltmobile.petapplication.adapter.OrderListAdapter;
@@ -43,6 +46,7 @@ public class OrdersController extends AppCompatActivity {
         addViews();
         addEvents();
     }
+
     private void addViews() {
         lsvCartItems = findViewById(R.id.lsvCartItems);
 
@@ -59,6 +63,7 @@ public class OrdersController extends AppCompatActivity {
 
         btnPlaceOrder = findViewById(R.id.btnPlaceOrder);
     }
+
     private void addEvents() {
         CartDAO cartDAO = new CartDAO(this);
         cartItems = cartDAO.getAllItems();
@@ -66,11 +71,19 @@ public class OrdersController extends AppCompatActivity {
         adapter = new OrderListAdapter(this, cartItems);
         lsvCartItems.setAdapter(adapter);
 
+        String[] id = new String[cartItems.size()];
         int totalPrice = 0;
         for (CartItem item : cartItems) {
             totalPrice += item.getPrice();
+            id[cartItems.indexOf(item)] = item.getId() + "";
         }
         lblTotalPrice.setText(totalPrice + " VNĐ");
+
+        Toast.makeText(this, Arrays.toString(id), Toast.LENGTH_SHORT).show();
+
+        btnPlaceOrder.setOnClickListener(v -> {
+
+        });
     }
 
 

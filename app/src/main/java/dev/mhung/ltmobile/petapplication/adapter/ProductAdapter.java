@@ -52,12 +52,12 @@ public class ProductAdapter extends ArrayAdapter<ProductResponse> {
         //Tách chuỗi tên sản phẩm
         String name = product.getName();
 
-        for(int i = 0; i < name.length(); i++){
-            if(name.charAt(i) == '-'){
-                name = name.substring(i + 1);
-                break;
-            }
-        }
+//        for(int i = 0; i < name.length(); i++){
+//            if(name.charAt(i) == '-'){
+//                name = name.substring(i + 1);
+//                break;
+//            }
+//        }
         // Gán dữ liệu
         tvName.setText("Tên: " + name);
         tvAge.setText("Tuổi: " + product.getAge());
