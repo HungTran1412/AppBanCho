@@ -15,6 +15,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -72,12 +74,20 @@ public class OrdersController extends AppCompatActivity {
         lsvCartItems.setAdapter(adapter);
 
         String[] id = new String[cartItems.size()];
-        int totalPrice = 0;
+        long totalPrice = 0;
         for (CartItem item : cartItems) {
             totalPrice += item.getPrice();
             id[cartItems.indexOf(item)] = item.getId() + "";
         }
-        lblTotalPrice.setText(totalPrice + " VNĐ");
+
+        //Thêm . vào giá
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        symbols.setGroupingSeparator('.');
+
+        DecimalFormat format = new DecimalFormat("#,###", symbols);
+
+        String price = format.format(totalPrice);
+        lblTotalPrice.setText(price + " VNĐ");
 
         Toast.makeText(this, Arrays.toString(id), Toast.LENGTH_SHORT).show();
 
