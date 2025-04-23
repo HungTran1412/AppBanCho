@@ -60,11 +60,11 @@ public class CartController extends AppCompatActivity {
         updateTotalMoney();
 
         btnDatHang.setOnClickListener(v -> {
-            if (cartItems != null && !cartItems.isEmpty()) {
-                cartDao.updateAllItems(cartItems);
-            } else {
-                Log.e("CartController", "Giỏ hàng trống, không thể cập nhật");
-            }
+//            if (cartItems != null && !cartItems.isEmpty()) {
+//                cartDao.updateAllItems(cartItems);
+//            } else {
+//                Log.e("CartController", "Giỏ hàng trống, không thể cập nhật");
+//            }
 
             SwitchScreen.switchScreen(CartController.this, OrdersController.class);
         });
