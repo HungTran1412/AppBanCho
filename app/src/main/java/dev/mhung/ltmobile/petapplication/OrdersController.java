@@ -65,6 +65,12 @@ public class OrdersController extends AppCompatActivity {
 
         adapter = new OrderListAdapter(this, cartItems);
         lsvCartItems.setAdapter(adapter);
+
+        int totalPrice = 0;
+        for (CartItem item : cartItems) {
+            totalPrice += item.getPrice();
+        }
+        lblTotalPrice.setText(totalPrice + " VNĐ");
     }
 
 

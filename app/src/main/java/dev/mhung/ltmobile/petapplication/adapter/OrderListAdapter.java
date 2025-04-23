@@ -53,7 +53,6 @@ public class OrderListAdapter extends BaseAdapter {
             holder.imgProduct = convertView.findViewById(R.id.imgProduct);
             holder.txtProductName = convertView.findViewById(R.id.tvProductName);
             holder.txtProductPrice = convertView.findViewById(R.id.tvProductPrice);
-            holder.txtProductGender = convertView.findViewById(R.id.tvProductGender);
 
             convertView.setTag(holder);
         }else{
@@ -63,7 +62,6 @@ public class OrderListAdapter extends BaseAdapter {
         CartItem cartItem = cartItems.get(position);
 
         holder.txtProductName.setText("Tên: " + cartItem.getName());
-        holder.txtProductGender.setText("Giống: " + cartItem.getBreed());
         holder.txtProductPrice.setText("Giá: " + cartItem.getPrice() + " VNĐ");
         Glide.with(context)
                 .load(cartItem.getImageUrl())
@@ -77,6 +75,5 @@ public class OrderListAdapter extends BaseAdapter {
         ImageView imgProduct;
         TextView txtProductName;
         TextView txtProductPrice;
-        TextView txtProductGender;
     }
 }
