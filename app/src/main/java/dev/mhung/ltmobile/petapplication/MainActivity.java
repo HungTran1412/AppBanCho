@@ -23,17 +23,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.List;
+
+import dev.mhung.ltmobile.petapplication.adapter.ProductAdapter;
 import dev.mhung.ltmobile.petapplication.model.SwitchScreen;
+import dev.mhung.ltmobile.petapplication.response.ProductApiRespone;
+import dev.mhung.ltmobile.petapplication.response.ProductResponse;
+import dev.mhung.ltmobile.petapplication.retrofit.RetrofitClient;
+import dev.mhung.ltmobile.petapplication.service.ProductApiService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar tbrManHinhChinh;
     ViewFlipper vflManHinhChinh;
     ListView lsvDanhSach;
     NavigationView navMenu;
-    ListView lsvManHinhChinh;
     Button btnGioiThieu, btnKhamPha;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
+    ProductAdapter adapter;
+    List<ProductResponse> productList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +74,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Xử lý khi bấm vào các mục trong NavigationView
         navMenu.setNavigationItemSelectedListener(this);
+
+        ProductApiService api = RetrofitClient.product();
+
+        api.getProducts().enqueue(new Callback<ProductApiRespone>() {
+            @Override
+            public void onResponse(Call<ProductApiRespone> call, Response<ProductApiRespone> response) {
+                if(response.isSuccessful()){
+                    productList = response.body().getProduct();
+                    adapter = new ProductAdapter(MainActivity.this, productList);
+                    lsvDanhSach.setAdapter(adapter);
+                }else {
+                    Log.e("API Error", "Code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProductApiRespone> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Lỗi kết nối: " + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void addViews() {
