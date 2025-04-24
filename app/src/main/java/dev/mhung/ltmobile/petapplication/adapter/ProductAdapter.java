@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dev.mhung.ltmobile.petapplication.DetailController;
@@ -24,13 +26,74 @@ import dev.mhung.ltmobile.petapplication.response.ProductResponse;
 
 public class ProductAdapter extends ArrayAdapter<ProductResponse> {
     private Context context;
+    private List<ProductResponse> allProducts;
+
     private List<ProductResponse> products;
+    private ProductFilter productFilter;
 
     public ProductAdapter(@NonNull Context context, List<ProductResponse> products) {
         super(context, 0, products);
         this.context = context;
         this.products = products;
+        this.allProducts = new ArrayList<>(products); // lưu bản sao danh sách gốc
+
     }
+
+    @Override
+    public Filter getFilter() {
+        if (productFilter == null) {
+            productFilter = new ProductFilter(); // đúng tên biến
+        }
+        return productFilter;
+    }
+
+    private String removeAccents(String s) {
+        s = s.toLowerCase()
+                .replaceAll("[áàảãạăắằẳẵặâấầẩẫậ]", "a")
+                .replaceAll("[éèẻẽẹêếềểễệ]", "e")
+                .replaceAll("[íìỉĩị]", "i")
+                .replaceAll("[óòỏõọôốồổỗộơớờởỡợ]", "o")
+                .replaceAll("[úùủũụưứừửữự]", "u")
+                .replaceAll("[ýỳỷỹỵ]", "y")
+                .replaceAll("đ", "d");
+        return s;
+    }
+
+    private class ProductFilter extends Filter {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<ProductResponse> filtered = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filtered.addAll(allProducts);
+            } else {
+                String filterPattern = removeAccents(constraint.toString().toLowerCase().trim());
+
+                for (ProductResponse product : allProducts) {
+                    String name = removeAccents(product.getName());
+                    String breed = product.getBreed() != null ? removeAccents(product.getBreed()) : "";
+
+                    if (name.contains(filterPattern) || breed.contains(filterPattern)) {
+                        filtered.add(product);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filtered;
+            results.count = filtered.size();
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            products.clear();
+            products.addAll((List<ProductResponse>) results.values);
+            notifyDataSetChanged();
+        }
+    }
+
 
     @NonNull
     @Override

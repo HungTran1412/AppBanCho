@@ -42,9 +42,6 @@
             android:name=".ProductController"
             android:exported="false" />
         <activity
-            android:name=".IntroduceController"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

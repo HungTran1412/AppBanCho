@@ -2,6 +2,7 @@ package dev.mhung.ltmobile.petapplication;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -11,6 +12,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
@@ -20,6 +22,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dev.mhung.ltmobile.petapplication.adapter.ProductAdapter;
@@ -53,13 +56,41 @@ public class ProductController extends AppCompatActivity implements NavigationVi
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
         addViews();
         addEvents();
         loadProducts();
+
+
     }
 
     private void addEvents() {
         navMenu.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setQueryHint("Tìm thú cưng...");
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText); // lọc!
+                return true;
+            }
+        });
+
+        return true;
     }
 
     private void addViews() {
