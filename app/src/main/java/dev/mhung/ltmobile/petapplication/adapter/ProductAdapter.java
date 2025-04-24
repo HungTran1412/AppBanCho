@@ -46,18 +46,17 @@ public class ProductAdapter extends ArrayAdapter<ProductResponse> {
         TextView tvAge = convertView.findViewById(R.id.tvProductAge);
         TextView tvPrice = convertView.findViewById(R.id.tvProductPrice);
         TextView tvGender = convertView.findViewById(R.id.tvProductGender);
-//        TextView tvDescription = convertView.findViewById(R.id.tvProductDescription);
         ImageView imgProduct = convertView.findViewById(R.id.imgProduct);
 
         //Tách chuỗi tên sản phẩm
         String name = product.getName();
 
-//        for(int i = 0; i < name.length(); i++){
-//            if(name.charAt(i) == '-'){
-//                name = name.substring(i + 1);
-//                break;
-//            }
-//        }
+        for(int i = 0; i < name.length(); i++){
+            if(name.charAt(i) == '-'){
+                name = name.substring(i + 1);
+                break;
+            }
+        }
         // Gán dữ liệu
         tvName.setText("Tên: " + name);
         tvAge.setText("Tuổi: " + product.getAge());

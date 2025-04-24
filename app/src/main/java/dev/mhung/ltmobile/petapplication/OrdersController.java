@@ -152,6 +152,7 @@ public class OrdersController extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Toast.makeText(OrdersController.this, "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
                     new CartDAO(OrdersController.this).clearCart();
+                    finish();
                     SwitchScreen.switchScreen(OrdersController.this, OrderSuccessfulController.class);
                 } else {
                     Toast.makeText(OrdersController.this, "Đặt hàng thất bại! Vui lòng thử lại.", Toast.LENGTH_SHORT).show();

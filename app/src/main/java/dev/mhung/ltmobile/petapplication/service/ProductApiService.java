@@ -10,4 +10,8 @@ import retrofit2.http.GET;
 public interface ProductApiService {
     @GET("/products/")
     Call<ProductApiRespone> getAllProducts();
+
+    @GET("/products/?limit=4")
+    Call<ProductApiRespone> getProducts();
+
 }
