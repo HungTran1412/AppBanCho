@@ -7,8 +7,10 @@ import dev.mhung.ltmobile.petapplication.response.AllOrderRespsonse;
 import dev.mhung.ltmobile.petapplication.response.OrderResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface OrderApiService {
     @POST("/orders")
@@ -25,4 +27,7 @@ public interface OrderApiService {
 
     @GET("/admin/order")
     Call<List<AllOrderRespsonse>> getAllOrder();
+
+    @DELETE("/admin/order/{orderId}")
+    Call<Void> deleteOrder(@Path("orderId") String orderId);
 }

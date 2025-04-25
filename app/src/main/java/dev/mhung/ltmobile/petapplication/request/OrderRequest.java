@@ -20,6 +20,10 @@ public class OrderRequest {
 
     public OrderRequest(){}
 
+    public OrderRequest(String orderId) {
+        this.orderId = orderId;
+    }
+
     public String getOrderId() {
         return orderId;
     }

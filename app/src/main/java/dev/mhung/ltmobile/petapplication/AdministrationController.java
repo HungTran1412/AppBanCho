@@ -70,7 +70,8 @@ public class AdministrationController extends AppCompatActivity {
 
         fetchContacts();
     }
-    private void mapping(){
+
+    private void mapping() {
         dailyRevenueText = findViewById(R.id.dailyRevenueText);
         monthlyRevenueText = findViewById(R.id.monthlyRevenueText);
         yearlyRevenueText = findViewById(R.id.yearlyRevenueText);
@@ -82,7 +83,7 @@ public class AdministrationController extends AppCompatActivity {
         revenueChangeRateText = findViewById(R.id.revenueChangeRateText);
         recyclerOrder = findViewById(R.id.recyclerPayments);
         recyclerOrder.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new OrderAdapter(orderList);
+        adapter = new OrderAdapter(this,orderList);
         recyclerOrder.setAdapter(adapter);
 
         recyclerView = findViewById(R.id.recyclerContacts);
@@ -106,7 +107,7 @@ public class AdministrationController extends AppCompatActivity {
                     todayOrders = response.body().getSoDon();
                     todayRevenue = response.body().getTongTien();
                     dailyOrderText.setText("Số đơn trong ngày: " + todayOrders);
-                    dailyRevenueText.setText("Doanh thu trong ngày: "+ CurrencyUtils.formatVND(todayRevenue));
+                    dailyRevenueText.setText("Doanh thu trong ngày: " + CurrencyUtils.formatVND(todayRevenue));
                     updateSummary();
                 }
             }
@@ -125,7 +126,7 @@ public class AdministrationController extends AppCompatActivity {
                     monthOrders = response.body().getSoDon();
                     monthRevenue = response.body().getTongTien();
                     monthlyOrderText.setText("Số đơn trong tháng: " + monthOrders);
-                    monthlyRevenueText.setText("Doanh thu trong tháng: "+ CurrencyUtils.formatVND(monthRevenue));
+                    monthlyRevenueText.setText("Doanh thu trong tháng: " + CurrencyUtils.formatVND(monthRevenue));
                     updateSummary();
                 }
             }
@@ -144,7 +145,7 @@ public class AdministrationController extends AppCompatActivity {
                     yearOrders = response.body().getSoDon();
                     yearRevenue = response.body().getTongTien();
                     yearlyOrderText.setText("Số đơn trong năm: " + yearOrders);
-                    yearlyRevenueText.setText("Doanh thu trong năm: "+ CurrencyUtils.formatVND(yearRevenue));
+                    yearlyRevenueText.setText("Doanh thu trong năm: " + CurrencyUtils.formatVND(yearRevenue));
                     updateSummary();
                 }
             }
@@ -175,7 +176,7 @@ public class AdministrationController extends AppCompatActivity {
     }
 
     private void loadAllOrders() {
- OrderApiService api = RetrofitClient.placeOrder();
+        OrderApiService api = RetrofitClient.placeOrder();
         api.getAllOrder().enqueue(new Callback<List<AllOrderRespsonse>>() {
             @Override
             public void onResponse(Call<List<AllOrderRespsonse>> call, Response<List<AllOrderRespsonse>> response) {
