@@ -23,13 +23,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     private List<CartItem> cartItems;
     private Context context;
     private CartDAO cartDao;
-
+    private TextView txtTongTienToanBo;
     public CartAdapter(Context context, CartDAO cartDao) {
         this.context = context;
         this.cartDao = cartDao;
         this.cartItems = cartDao.getAllItems();
     }
-
+    public CartAdapter(Context context, CartDAO cartDao, TextView txtTongTienToanBo) {
+        this.context = context;
+        this.cartDao = cartDao;
+        this.cartItems = cartDao.getAllItems();
+        this.txtTongTienToanBo = txtTongTienToanBo;
+    }
     @Override
     public CartViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.cart_item, parent, false);
@@ -64,28 +69,37 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             int quantity = item.getQuantity();
             if (quantity > 1) {
                 item.setQuantity(quantity - 1);
+                cartDao.updateAllItems(cartItems);
                 holder.txtSoLuong.setText(String.valueOf(item.getQuantity()));
-                cartDao.updateItem(item); // Cập nhật vào cơ sở dữ liệu
+//                cartDao.updateItem(item);
                 notifyItemChanged(position);
+                updateTotalMoney();
             }
         });
 
         holder.imgCong.setOnClickListener(v -> {
             int quantity = item.getQuantity();
             item.setQuantity(quantity + 1);
+            cartDao.updateAllItems(cartItems);
             holder.txtSoLuong.setText(String.valueOf(item.getQuantity()));
-            cartDao.updateItem(item);
+//            cartDao.updateItem(item);
             notifyItemChanged(position);
+            updateTotalMoney();
         });
 
         holder.imgXoaCart.setOnClickListener(v -> {
             int pos = holder.getAdapterPosition();
-            if (pos == RecyclerView.NO_POSITION) return;
+            if (pos == RecyclerView.NO_POSITION || pos >= cartItems.size()) return;
 
-            cartDao.deleteItem(item.getId());
+            CartItem currentItem = cartItems.get(pos);
+            if (currentItem == null) return;
+
+            cartDao.deleteItem(currentItem.getId());
             cartItems.remove(pos);
+
             notifyItemRemoved(pos);
             notifyItemRangeChanged(pos, cartItems.size());
+            updateTotalMoney();
 
             Toast.makeText(context, "Đã xoá sản phẩm", Toast.LENGTH_SHORT).show();
         });
@@ -94,6 +108,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     @Override
     public int getItemCount() {
         return cartItems.size();
+    }
+
+    public void updateTotalMoney() {
+        int totalMoney = 0;
+        for (CartItem item : cartItems) {
+            totalMoney += item.getPrice() * item.getQuantity();
+        }
+        txtTongTienToanBo.setText(totalMoney + " VNĐ");
     }
 
     public class CartViewHolder extends RecyclerView.ViewHolder {

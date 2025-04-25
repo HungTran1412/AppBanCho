@@ -58,6 +58,7 @@ public class CartDAO {
                 values.put(COLUMN_IMAGE_URL, item.getImageUrl());
                 db.update(TABLE_CART, values, COLUMN_ID + " = ?", new String[]{String.valueOf(item.getId())});
             }
+            Log.d("CartDAO", "All items updated successfully");
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();

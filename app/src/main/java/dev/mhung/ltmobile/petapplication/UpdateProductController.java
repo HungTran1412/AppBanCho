@@ -45,7 +45,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UpdateProductController extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class UpdateProductController extends AppCompatActivity {
     ListView lsvDanhSach;
 
     static public int state=0;
@@ -53,11 +53,6 @@ public class UpdateProductController extends AppCompatActivity implements Naviga
     Button Add;
     ProductAdapter1 adapter;
     List<ProductResponse> productList;
-    ImageView imgProduct;
-    Toolbar toolbar;
-    NavigationView navMenu;
-    DrawerLayout drawerLayout;
-    ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +69,7 @@ public class UpdateProductController extends AppCompatActivity implements Naviga
         loadProducts();
     }
     private void addEvents() {
-        navMenu.setNavigationItemSelectedListener(this);
+
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -191,17 +186,7 @@ public class UpdateProductController extends AppCompatActivity implements Naviga
         // imgProduct = (ImageView)findViewById(R.id.imgProduct);
 //        adapter = new ProductAdapter1(this, productList);
 //        lsvDanhSach.setAdapter(adapter);
-        navMenu = findViewById(R.id.navMenu);
-        drawerLayout = findViewById(R.id.drawer_layout);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar,
-                R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
     }
 
     private void loadProducts() {
@@ -230,27 +215,4 @@ public class UpdateProductController extends AppCompatActivity implements Naviga
         });
     }
 
-
-
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-
-        try {
-            if(id == R.id.nav_dangnhap){
-                SwitchScreen.switchScreen(UpdateProductController.this, LoginController.class);
-            }else if(id == R.id.nav_trangchu){
-                SwitchScreen.switchScreen(UpdateProductController.this, MainActivity.class);
-            } else if (id == R.id.nav_lienhe) {
-                SwitchScreen.switchScreen(UpdateProductController.this, ContactController.class);
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.e("MainActivity", "Lỗi khi chuyển sang màn hình: " + e.getMessage());
-        }
-
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-    }
 }

@@ -53,7 +53,7 @@ public class CartController extends AppCompatActivity {
             cartItems = new ArrayList<>();
         }
 
-        cartAdapter = new CartAdapter(this, cartDao);
+        CartAdapter cartAdapter = new CartAdapter(this, cartDao, txtTongTien);
         recyclerViewGioHang.setAdapter(cartAdapter);
         cartAdapter.notifyDataSetChanged();
 
@@ -68,6 +68,7 @@ public class CartController extends AppCompatActivity {
 
             SwitchScreen.switchScreen(CartController.this, OrdersController.class);
         });
+        cartAdapter.updateTotalMoney();
     }
 
 
@@ -78,7 +79,10 @@ public class CartController extends AppCompatActivity {
                 totalMoney += item.getPrice() * item.getQuantity();
             }
         }
-        txtTongTien.setText(totalMoney + " VNĐ");
+
+        if (txtTongTien != null) {
+            txtTongTien.setText(totalMoney + " VNĐ");
+        }
     }
 
     private void addViews() {

@@ -87,6 +87,7 @@ public class OrdersController extends AppCompatActivity {
 
         //tính tổng tiền
         for (CartItem item : cartItems) {
+//            Toast.makeText(OrdersController.this, "So luong: " + item.getQuantity(), Toast.LENGTH_SHORT).show();
             totalPrice += item.getPrice() * item.getQuantity();
         }
 

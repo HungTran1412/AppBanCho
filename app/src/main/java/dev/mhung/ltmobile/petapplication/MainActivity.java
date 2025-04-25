@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void addEvents() {
-        btnGioiThieu.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, UpdateProductController.class));
+        btnGioiThieu.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, CartController.class));
         btnKhamPha.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, ProductController.class));
 
         // Xử lý khi bấm vào các mục trong NavigationView
