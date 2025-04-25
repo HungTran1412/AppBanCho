@@ -67,7 +67,7 @@ public class OrderSuccessfulController extends AppCompatActivity {
     private void loadProducts(){
         ProductApiService api = RetrofitClient.product();
 
-        api.getProducts().enqueue(new Callback<ProductApiRespone>() {
+        api.getAllProducts().enqueue(new Callback<ProductApiRespone>() {
             @Override
             public void onResponse(Call<ProductApiRespone> call, Response<ProductApiRespone> response) {
                 if(response.isSuccessful()){

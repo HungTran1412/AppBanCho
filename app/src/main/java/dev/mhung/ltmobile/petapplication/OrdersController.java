@@ -87,7 +87,7 @@ public class OrdersController extends AppCompatActivity {
 
         //tính tổng tiền
         for (CartItem item : cartItems) {
-            totalPrice += item.getPrice();
+            totalPrice += item.getPrice() * item.getQuantity();
         }
 
         //Thêm . vào giá

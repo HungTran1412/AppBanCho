@@ -7,6 +7,9 @@ public class ProductResponse {
     private int price;
     private int quantity;
     private String img;
+
+    private String size;
+    private String color;
     private String description;
     private String breed;
 
@@ -75,5 +78,21 @@ public class ProductResponse {
 
     public void setBreed(String breed) {
         this.breed = breed;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 }

@@ -2,6 +2,7 @@ package dev.mhung.ltmobile.petapplication;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import dev.mhung.ltmobile.petapplication.adapter.ContactAdapter;
 import dev.mhung.ltmobile.petapplication.adapter.OrderAdapter;
 import dev.mhung.ltmobile.petapplication.model.Contact;
 import dev.mhung.ltmobile.petapplication.model.CurrencyUtils;
+import dev.mhung.ltmobile.petapplication.model.SwitchScreen;
 import dev.mhung.ltmobile.petapplication.response.AllOrderRespsonse;
 import dev.mhung.ltmobile.petapplication.response.OrderResponse;
 import dev.mhung.ltmobile.petapplication.retrofit.RetrofitClient;
@@ -39,7 +41,7 @@ public class AdministrationController extends AppCompatActivity {
     private TextView yearlyRevenueText, dailyRevenueText, monthlyRevenueText;
     private long todayRevenue = 0, monthRevenue = 0, yearRevenue = 0;
     private int todayOrders = 0, monthOrders = 0, yearOrders = 0;
-
+    private Button btnAdProdList;
     private RecyclerView recyclerOrder;
     private OrderAdapter adapter;
     private List<AllOrderRespsonse> orderList = new ArrayList<>();
@@ -62,6 +64,9 @@ public class AdministrationController extends AppCompatActivity {
         // Ánh xạ TextView
         mapping();
 
+        btnAdProdList.setOnClickListener(v->{
+            SwitchScreen.switchScreen(AdministrationController.this, UpdateProductController.class);
+        });
 
         // Gọi API
         fetchData();
@@ -92,7 +97,7 @@ public class AdministrationController extends AppCompatActivity {
         contactAdapter = new ContactAdapter(contactList);
         recyclerView.setAdapter(contactAdapter);
 
-
+        btnAdProdList = findViewById(R.id.btnAdProdList);
     }
 
     private void fetchData() {

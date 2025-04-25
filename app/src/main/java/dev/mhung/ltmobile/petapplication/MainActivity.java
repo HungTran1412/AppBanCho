@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void addEvents() {
-        btnGioiThieu.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, AdministrationController.class));
+        btnGioiThieu.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, UpdateProductController.class));
         btnKhamPha.setOnClickListener(v -> SwitchScreen.switchScreen(MainActivity.this, ProductController.class));
 
         // Xử lý khi bấm vào các mục trong NavigationView
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         ProductApiService api = RetrofitClient.product();
 
-        api.getProducts().enqueue(new Callback<ProductApiRespone>() {
+        api.getAllProducts().enqueue(new Callback<ProductApiRespone>() {
             @Override
             public void onResponse(Call<ProductApiRespone> call, Response<ProductApiRespone> response) {
                 if(response.isSuccessful()){

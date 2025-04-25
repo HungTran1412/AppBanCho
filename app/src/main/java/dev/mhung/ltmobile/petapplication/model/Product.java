@@ -1,7 +1,6 @@
-package dev.mhung.ltmobile.petapplication.request;
+package dev.mhung.ltmobile.petapplication.model;
 
-public class ProductRequest {
-    private int id;
+public class Product {
     private String name;
     private int age;
     private long price;
@@ -12,11 +11,7 @@ public class ProductRequest {
     private String description;
     private String breed;
 
-
-
-
-    public ProductRequest(int id, String name, int age, long price, int quantity, String size, String color, String img, String description, String breed) {
-        this.id = id;
+    public Product(String name, int age, long price, int quantity, String size, String color, String img, String description, String breed) {
         this.name = name;
         this.age = age;
         this.price = price;
@@ -26,26 +21,6 @@ public class ProductRequest {
         this.img = img;
         this.description = description;
         this.breed = breed;
-    }
-
-    public ProductRequest(String name, int age, long price, int quantity, String size, String color, String description, String img, String breed) {
-        this.name = name;
-        this.age = age;
-        this.price = price;
-        this.quantity = quantity;
-        this.size = size;
-        this.color = color;
-        this.description = description;
-        this.img = img;
-        this.breed = breed;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
