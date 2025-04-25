@@ -6,137 +6,149 @@
     android:layout_height="match_parent">
 
     <!-- Nội dung chính -->
-    <LinearLayout
-        android:id="@+id/main"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tbrManHinhChinh"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="Liên hệ"
-            app:titleTextColor="#000000"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:theme="@style/ThemeOverlay.AppCompat.Light"
-            app:navigationIcon="@drawable/menu" />
-
-        <!-- Các thành phần còn lại như bạn đã viết -->
-        <!-- Họ tên -->
-        <TextView
+        <LinearLayout
+            android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Họ tên:"
-            android:textSize="20sp" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <EditText
-            android:id="@+id/txtCTHoTen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nhập họ tên"
-            android:inputType="text"
-            android:textSize="20sp" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tbrManHinhChinh"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="Liên hệ"
+                app:titleTextColor="#000000"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:theme="@style/ThemeOverlay.AppCompat.Light"
+                app:navigationIcon="@drawable/menu" />
 
-        <!-- Email -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Email:"
-            android:textSize="20sp" />
+            <!-- Họ tên -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Họ tên:"
+                android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/txtCTEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nhập email"
-            android:inputType="textEmailAddress"
-            android:textSize="20sp" />
+            <EditText
+                android:id="@+id/txtCTHoTen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập họ tên"
+                android:inputType="text"
+                android:textSize="20sp" />
 
-        <!-- SĐT -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="SĐT:"
-            android:textSize="20sp" />
+            <!-- Email -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Email:"
+                android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/txtCTSDT"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nhập số điện thoại"
-            android:inputType="phone"
-            android:textSize="20sp" />
+            <EditText
+                android:id="@+id/txtCTEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập email"
+                android:inputType="textEmailAddress"
+                android:textSize="20sp" />
 
-        <!-- Địa chỉ -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Địa chỉ:"
-            android:textSize="20sp" />
+            <!-- SĐT -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="SĐT:"
+                android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/txtCTDiaChi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nhập địa chỉ"
-            android:inputType="text"
-            android:textSize="20sp" />
+            <EditText
+                android:id="@+id/txtCTSDT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập số điện thoại"
+                android:inputType="phone"
+                android:textSize="20sp" />
 
-        <!-- Nội dung -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Nội dung:"
-            android:textSize="20sp" />
+            <!-- Địa chỉ -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Địa chỉ:"
+                android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/txtCTContent"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@android:drawable/editbox_background"
-            android:gravity="top"
-            android:hint="Nhập nội dung"
-            android:inputType="textMultiLine"
-            android:textSize="20sp" />
+            <EditText
+                android:id="@+id/txtCTDiaChi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập địa chỉ"
+                android:inputType="text"
+                android:textSize="20sp" />
 
-        <!-- Nút gửi -->
-        <Button
-            android:id="@+id/btnCTGui"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#002a47"
-            android:text="Gửi"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp" />
+            <!-- Nội dung -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Nội dung:"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/lblCTHotLine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30px"
-            android:text="Hotline: 0987654321"
-            android:textSize="34sp"
-            android:textStyle="bold" />
+            <EditText
+                android:id="@+id/txtCTContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập nội dung"
+                android:inputType="textMultiLine"
+                android:gravity="top|start"
+                android:minLines="4"
+                android:textSize="20sp"
+                android:padding="8dp" />
 
-        <Button
-            android:id="@+id/btnCTGoi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="600px"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#002a47"
-            android:text="Gọi ngay"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp" />
-    </LinearLayout>
+            <!-- Nút gửi -->
+            <Button
+                android:id="@+id/btnCTGui"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#002a47"
+                android:text="Gửi"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+
+            <!-- Hotline -->
+            <TextView
+                android:id="@+id/lblCTHotLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Hotline: 0987654321"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <!-- Nút gọi ngay căn phải -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="end">
+
+                <Button
+                    android:id="@+id/btnCTGoi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#002a47"
+                    android:text="Gọi ngay"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <!-- Navigation Drawer -->
     <com.google.android.material.navigation.NavigationView

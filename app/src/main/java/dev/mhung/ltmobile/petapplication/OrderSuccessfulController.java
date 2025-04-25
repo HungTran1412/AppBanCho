@@ -50,7 +50,7 @@ public class OrderSuccessfulController extends AppCompatActivity {
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SwitchScreen.switchScreen(OrderSuccessfulController.this, CartController.class);
+                SwitchScreen.switchScreen(OrderSuccessfulController.this, ContactController.class);
             }
         });
 

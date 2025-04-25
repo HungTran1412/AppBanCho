@@ -42,7 +42,7 @@ public class ProductAdapter extends ArrayAdapter<ProductResponse> {
     @Override
     public Filter getFilter() {
         if (productFilter == null) {
-            productFilter = new ProductFilter(); // đúng tên biến
+            productFilter = new ProductFilter();
         }
         return productFilter;
     }

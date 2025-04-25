@@ -1,159 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main_order"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:background="#FFFFFF"
+    android:padding="16dp"
     tools:context=".OrdersController">
 
-    <!-- GIỎ HÀNG DANH SÁCH SẢN PHẨM -->
-    <TextView
-        android:text="Giỏ Hàng"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#000000"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginBottom="8dp" />
-
-    <ListView
-        android:id="@+id/lsvCartItems"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:divider="#CCCCCC"
-        android:dividerHeight="1dp"
-        android:background="#F9F9F9" />
-
-    <!-- THÔNG TIN KHÁCH HÀNG -->
-    <TextView
-        android:text="Thông Tin Khách Hàng"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#000000"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"/>
-
-    <EditText
-        android:id="@+id/txtOrderFullname"
+    <LinearLayout
+        android:id="@+id/main_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/edit_text_background"
-        android:hint="Họ và tên"
-        android:padding="12dp" />
-
-    <EditText
-        android:id="@+id/txtOrderEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/edit_text_background"
-        android:hint="Email"
-        android:padding="12dp" />
-
-    <EditText
-        android:id="@+id/txtOrderPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/edit_text_background"
-        android:hint="Số điện thoại"
-        android:padding="12dp" />
-
-    <EditText
-        android:id="@+id/txtOrderAdress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/edit_text_background"
-        android:hint="Địa chỉ"
-        android:padding="12dp" />
-
-    <EditText
-        android:id="@+id/txtOrderNote"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/edit_text_background"
-        android:gravity="top|start"
-        android:hint="Ghi chú"
-        android:inputType="textMultiLine"
-        android:lines="4"
-        android:minHeight="100dp"
-        android:padding="12dp" />
-
-    <RadioGroup
-        android:layout_width="377dp"
-        android:layout_height="106dp"
-        android:layout_marginBottom="16dp"
         android:orientation="vertical">
 
+        <!-- GIỎ HÀNG DANH SÁCH SẢN PHẨM -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Phương thức thanh toán"
+            android:text="Giỏ Hàng"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <RadioButton
-            android:id="@+id/cod"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:checked="true"
-            android:text="Thanh toán tiền mặt khi nhận hàng"
-            android:textColor="#000000"
-            android:textSize="16sp" />
+        <ListView
+            android:id="@+id/lsvCartItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="300dp"
+            android:divider="#CCCCCC"
+            android:dividerHeight="1dp"
+            android:background="#F9F9F9" />
 
-        <RadioButton
-            android:id="@+id/vnpay"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:text="Thanh toán qua ví VNPay"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-    </RadioGroup>
-
-
-    <!-- NÚT ĐẶT HÀNG -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:gravity="end|center_vertical"
-        android:orientation="horizontal">
-
+        <!-- THÔNG TIN KHÁCH HÀNG -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tổng tiền: "
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Thông Tin Khách Hàng"
             android:textColor="#000000"
-            android:textSize="22sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/lblTotalPrice"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/txtOrderFullname"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="#3A00E5"
-            android:textSize="22sp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Họ và tên"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/txtOrderEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Email"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/txtOrderPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Số điện thoại"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/txtOrderAdress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Địa chỉ"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/txtOrderNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/edit_text_background"
+            android:gravity="top|start"
+            android:hint="Ghi chú"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            android:padding="12dp" />
+
+        <!-- PHƯƠNG THỨC THANH TOÁN -->
+        <TextView
+            android:text="Phương thức thanh toán"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/cod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Thanh toán tiền mặt khi nhận hàng"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/vnpay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thanh toán qua ví VNPay"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </RadioGroup>
+
+        <!-- TỔNG TIỀN -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:gravity="end|center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tổng tiền: "
+                android:textColor="#000000"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/lblTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#3A00E5"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- NÚT ĐẶT HÀNG -->
+        <Button
+            android:id="@+id/btnPlaceOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#3A00E5"
+            android:padding="14dp"
+            android:text="ĐẶT HÀNG"
+            android:textColor="#FFFFFF"
             android:textStyle="bold" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btnPlaceOrder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#3A00E5"
-        android:padding="14dp"
-        android:text="ĐẶT HÀNG"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
-</LinearLayout>
+</ScrollView>

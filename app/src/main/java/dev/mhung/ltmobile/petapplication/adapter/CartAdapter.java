@@ -60,23 +60,23 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                     .into(holder.imgThuCung);
         }
 
-        holder.imgTru.setOnClickListener(v -> {
-            int quantity = item.getQuantity();
-            if (quantity > 1) {
-                item.setQuantity(quantity - 1);
-                holder.txtSoLuong.setText(String.valueOf(item.getQuantity()));
-                cartDao.updateItem(item); // Cập nhật vào cơ sở dữ liệu
-                notifyItemChanged(position);
-            }
-        });
-
-        holder.imgCong.setOnClickListener(v -> {
-            int quantity = item.getQuantity();
-            item.setQuantity(quantity + 1);
-            holder.txtSoLuong.setText(String.valueOf(item.getQuantity()));
-            cartDao.updateItem(item);
-            notifyItemChanged(position);
-        });
+//        holder.imgTru.setOnClickListener(v -> {
+//            int quantity = item.getQuantity();
+//            if (quantity > 1) {
+//                item.setQuantity(quantity - 1);
+//                holder.txtSoLuong.setText(String.valueOf(item.getQuantity()));
+//                cartDao.updateItem(item); // Cập nhật vào cơ sở dữ liệu
+//                notifyItemChanged(position);
+//            }
+//        });
+//
+//        holder.imgCong.setOnClickListener(v -> {
+//            int quantity = item.getQuantity();
+//            item.setQuantity(quantity + 1);
+//            holder.txtSoLuong.setText(String.valueOf(item.getQuantity()));
+//            cartDao.updateItem(item);
+//            notifyItemChanged(position);
+//        });
 
         holder.imgXoaCart.setOnClickListener(v -> {
             int pos = holder.getAdapterPosition();
