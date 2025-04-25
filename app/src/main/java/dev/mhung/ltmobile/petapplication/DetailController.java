@@ -113,7 +113,7 @@ public class DetailController extends AppCompatActivity {
         txtGiaChiTiet = (TextView) findViewById(R.id.txtGiaChiTiet);
         btnThemVaoGioHang = (Button) findViewById(R.id.btnThemVaoGioHang);
         imgChiTiet = (ImageView) findViewById(R.id.imgChiTiet);
-        spnItem = (Spinner) findViewById(R.id.spnItem);
+//        spnItem = (Spinner) findViewById(R.id.spnItem);
     }
 
 }
