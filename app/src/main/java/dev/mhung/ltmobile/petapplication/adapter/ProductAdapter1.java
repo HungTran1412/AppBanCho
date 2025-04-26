@@ -202,11 +202,8 @@ public class ProductAdapter1 extends ArrayAdapter<ProductResponse> {
                                             Toast.makeText(context, "Xoá dữ liệu thành công!", Toast.LENGTH_SHORT).show();
                                             Log.d("RetrofitClient", "Xoá thành công!");
 
-                                            products.remove(position);// Cập nhật
+                                            products.remove(position);
                                             notifyDataSetChanged();
-
-
-
                                         }else{
                                             Toast.makeText(context, "Mã lỗi: " + response.code(), Toast.LENGTH_SHORT).show();
                                             Log.e("RetrofitClient", "Lỗi  " + response.code());

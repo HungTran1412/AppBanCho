@@ -164,6 +164,8 @@ public class UpdateProductController extends AppCompatActivity {
 
                                 });
 
+                            }else{
+                                loadProducts();
                             }
                         }
                     });
