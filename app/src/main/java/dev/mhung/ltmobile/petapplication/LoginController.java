@@ -80,7 +80,7 @@ public class LoginController extends AppCompatActivity implements NavigationView
                         SwitchScreen.switchScreen(LoginController.this, AdministrationController.class);
                         Log.d("RetrofitClient", "Đăng nhập thành công!");
                     } else {
-                        Toast.makeText(LoginController.this, "Lỗi đăng nhập! Mã lỗi: " + response.code(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginController.this, "Sai email hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
                         Log.e("RetrofitClient", "Lỗi đăng nhập! Mã lỗi: " + response.code());
                     }
                 }

@@ -151,7 +151,7 @@ public class OrdersController extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(OrdersController.this, "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(OrdersController.this, "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
                     new CartDAO(OrdersController.this).clearCart();
                     finish();
                     SwitchScreen.switchScreen(OrdersController.this, OrderSuccessfulController.class);
